@@ -1,0 +1,23 @@
+@use "./mixins.module.scss" as mixins;
+
+.main {
+
+  @include mixins.routeBaseStyle;
+  display: flex;
+
+
+  &__left {
+
+    width: 50%;
+
+  }
+
+  &__right {
+
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+}

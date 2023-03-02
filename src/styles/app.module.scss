@@ -1,0 +1,7 @@
+@use "./mixins.module.scss" as mixins;
+
+.main {
+
+  @include mixins.routeBaseStyle;
+
+}

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap');
+
+$accent: #2B78E4;
+$warning: #F2AC57;
+$success: #14A38B;
+$error: #FF7171;
+$primary: #323232;
+$secondary: #756F86;
+$muted: #7C9CBF;
+$bright: #FFFFFF;
+$shade: #B2B8BE;
+$tint: #EBF4F8;
+
+@mixin myFont($font-weight) {
+
+  font-family: 'Inter', sans-serif;
+  font-weight: $font-weight;
+
+}
