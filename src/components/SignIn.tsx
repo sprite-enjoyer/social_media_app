@@ -3,11 +3,19 @@ import googleImg from "../assets/oauth_icons/google.svg";
 import facebookImg from "../assets/oauth_icons/facebook.svg";
 import showPassword from "../assets/icons/show_password.svg";
 import hidePassword from "../assets/icons/hide_password.svg";
-import { useState } from "react";
+import SignInStore from "../stores/SignInStore";
+import { observer } from "mobx-react";
 
-const SignIn = () => {
 
-  const [pwdShown, setPwdShown] = useState(false);
+export interface SignInProps {
+  store: SignInStore,
+}
+
+const SignIn = ({ store }: SignInProps) => {
+
+  const handleRegisterButtonClick = () => {
+    store.setSignUpShown(true);
+  };
 
   return (
     <div className={styles["main"]} >
@@ -33,10 +41,13 @@ const SignIn = () => {
         <label className={styles["label"].concat(" ".concat(styles["pwd-label"]))} >
           Password:
           <div className={styles["password-div"]} >
-            <input type="password" className={styles["pwd"]} />
-            <button className={styles["show-button"]} >
+            <input type={store.passwordShown ? "text" : "password"} className={styles["pwd"]} />
+            <button
+              onClick={() => store.setPasswordShown(!store.passwordShown)}
+              className={styles["show-button"]}
+            >
               <img
-                src={pwdShown ? hidePassword : showPassword}
+                src={store.passwordShown ? hidePassword : showPassword}
                 alt="show/hide button"
                 className={styles["button-image"]}
               />
@@ -62,12 +73,12 @@ const SignIn = () => {
         <span className={styles["question-txt"]} >
           Don't have an account?
         </span>
-        <a href="" className={styles["register-link"]}>
-          Register
-        </a>
+        <button onClick={handleRegisterButtonClick} className={styles["register-btn"]}>
+          Register {store.signUpShown}
+        </button>
       </div>
     </div>
   );
 };
 
-export default SignIn;
+export default observer(SignIn);

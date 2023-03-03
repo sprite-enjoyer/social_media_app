@@ -2,7 +2,6 @@
 @use "./palette.module.scss" as palette;
 
 @mixin baseInputStyles {
-
   width: 100%;
   height: 25px;
   outline: none;
@@ -17,23 +16,19 @@
   font-size: 20px;
   line-height: 28px;
   color: #4A4A4A;
-
 }
 
 .main {
-
   @include palette.myFont(400);
   padding: 10%;
   display: flex;
   flex-direction: column;
   align-self: center;
   justify-content: center;
-
 }
 
 
 .title {
-
   display: flex;
   justify-content: center;
   @include palette.myFont(700);
@@ -44,48 +39,38 @@
   color: #2C2738;
   margin: 0;
   margin-bottom: 10px;
-
 }
 
 .spacer {
-
   opacity: 0.5;
   background: #D9D9D9;
   width: 100%;
-
 }
 
 .signInButtons {
-
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10% 0 10% 0;
   gap: 10px;
-
 }
 
 
 .google-btn {
-
   all: unset;
   @include mixins.signInButtonStyle;
   @include palette.myFont(400);
-
 }
 
 .facebook-btn {
-
   all: unset;
   @include mixins.signInButtonStyle;
   @include palette.myFont(400);
   background: #4267B2;
   color: white;
-
 }
 
 .inputs {
-
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -94,7 +79,6 @@
 }
 
 .label {
-
   @include palette.myFont(600);
   color: #4A4A4A;
   width: 100%;
@@ -103,21 +87,19 @@
 
 
 .email {
-
   @include baseInputStyles();
-
 }
 
 .password-div {
-
   display: flex;
   @include baseInputStyles();
-
+  cursor: text;
 }
 
 .pwd {
   all: unset;
   width: 100%;
+  cursor: text;
 }
 
 .pwd-label {
@@ -125,7 +107,6 @@
 }
 
 .show-button {
-
   all: unset;
   display: flex;
   justify-content: center;
@@ -148,7 +129,6 @@
 }
 
 .remember-me {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,27 +139,21 @@
 }
 
 .checkbox {
-
   background: #2B78E4;
-
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   height: 25px;
   width: 25px;
-
 }
 
 .forgot-password {
-
   all: unset;
   cursor: pointer;
   color: #2B78E4;
   font-weight: 500;
   font-size: 18px;
   line-height: 28px;
-
 }
-
 
 .btn {
 
@@ -200,19 +174,16 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-
 }
 
 .question-txt {
-
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
-
 }
 
-.register-link {
+.register-btn {
 
   all: unset;
   cursor: pointer;
@@ -220,5 +191,4 @@
   font-size: 18px;
   line-height: 28px;
   color: #2B78E4;
-
 }

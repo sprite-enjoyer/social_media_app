@@ -1,0 +1,112 @@
+@use "./mixins.module.scss" as mixins;
+@use "./palette.module.scss" as palette;
+
+
+.main {
+
+  @include palette.myFont(400);
+  @include mixins.routeBaseStyle;
+  background-color: rgba(0, 0, 0, 0.425);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.container {
+
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 600px;
+  height: 700px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 68px;
+  text-align: center;
+  color: #2C2738;
+  margin-bottom: 40px;
+}
+
+.info {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #2C2738;
+  margin-bottom: 15px;
+}
+
+.spacer {
+  opacity: 0.5;
+  background: #D9D9D9;
+  width: 85%;
+  margin-bottom: 50px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  color: #2C2738;
+}
+
+.input {
+  all: unset;
+  background: #FCFDFE;
+  border: 2px solid #D8D8D8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  height: 45px;
+  width: 100%;
+  margin: 5px 0px 30px 0px;
+  background: #FCFDFE;
+  border: 2px solid #D8D8D8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  cursor: auto;
+  font-size: 20px;
+  font-weight: 400;
+  padding-left: 5px;
+}
+
+.btn {
+  all: unset;
+  background: #2B78E4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  width: 80%;
+  height: 50px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
