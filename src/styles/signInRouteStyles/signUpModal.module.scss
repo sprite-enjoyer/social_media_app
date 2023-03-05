@@ -4,22 +4,17 @@
 
   @include abstracts.myFont(400);
   @include abstracts.routeBaseStyle;
+  @include abstracts.centeringStyle();
   background-color: rgba(0, 0, 0, 0.425);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1;
 }
 
 .container {
 
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  @include abstracts.centeringStyle(column);
   width: 600px;
   height: 700px;
   background: #FFFFFF;

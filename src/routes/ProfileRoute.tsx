@@ -4,7 +4,6 @@ import RightSidebar from "../components/RightSidebar";
 import styles from "../styles/profileRouteStyles/profileRoute.module.scss";
 
 
-
 const ProfileRoute = () => {
 
   return (

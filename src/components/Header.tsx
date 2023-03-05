@@ -1,6 +1,10 @@
 import styles from "../styles/componentStyles/header.module.scss";
+import HeaderDropDown from "./HeaderDropDown";
 import logo from "../assets/icons/logo.svg";
 import searchSvg from "../assets/icons/search.svg";
+import notificationsSvg from "../assets/icons/notifications.svg";
+import messagesSvg from "../assets/icons/messages.svg";
+import profileSvg from "../assets/icons/profile.svg";
 
 const Header = () => {
 
@@ -34,7 +38,28 @@ const Header = () => {
         </button>
       </div>
       <div className={styles["right-div"]} >
-
+        <button className={styles["notifications-btn"]}>
+          <img
+            className={styles["notifications-img"]}
+            src={notificationsSvg}
+            alt="messages icon"
+          />
+        </button>
+        <button className={styles["messages-btn"]} >
+          <img
+            className={styles["messages-img"]}
+            src={messagesSvg}
+            alt="messages icon"
+          />
+        </button>
+        <button className={styles["profile-btn"]} >
+          <img
+            className={styles["profile-img"]}
+            src={profileSvg}
+            alt="profile button image"
+          />
+        </button>
+        <HeaderDropDown />
       </div>
     </div>
   );

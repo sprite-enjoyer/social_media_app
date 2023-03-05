@@ -6,7 +6,6 @@ const LeftSidebar = () => {
 
   return (
     <div className={styles["main"]} >
-
     </div>
   );
 

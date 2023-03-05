@@ -20,10 +20,7 @@
 .main {
   @include abstracts.myFont(400);
   padding: 10%;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  justify-content: center;
+  @include abstracts.centeringStyle(column);
 }
 
 
@@ -47,26 +44,42 @@
 }
 
 .signInButtons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include abstracts.centeringStyle();
   margin: 10% 0 10% 0;
   gap: 10px;
 }
 
+@mixin resetButton($background-color: white, $color: black, $border-radius: 0px, $cursor: pointer, ) {
+
+  all: unset;
+  background-color: $background-color;
+  color: $color;
+  border-radius: $border-radius;
+  cursor: $cursor;
+
+  &:focus {
+    outline: 1px solid black;
+  }
+}
 
 .google-btn {
-  all: unset;
-  @include abstracts.signInButtonStyle;
+
+  @include abstracts.resetButton($border-radius: 6px);
   @include abstracts.myFont(400);
+  @include abstracts.centeringStyle();
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 15px 20px 15px 20px;
+  gap: 10px;
+
 }
 
 .facebook-btn {
-  all: unset;
-  @include abstracts.signInButtonStyle;
+  @include abstracts.resetButton($border-radius: 6px, $background-color: #4267B2, $color: white);
   @include abstracts.myFont(400);
-  background: #4267B2;
-  color: white;
+  @include abstracts.centeringStyle();
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 15px 20px 15px 20px;
+  gap: 10px;
 }
 
 .inputs {
@@ -106,11 +119,8 @@
 }
 
 .show-button {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  @include abstracts.resetButton();
+  @include abstracts.centeringStyle();
   margin-right: 10px;
 
 }
@@ -128,9 +138,7 @@
 }
 
 .remember-me {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include abstracts.centeringStyle();
   gap: 5px;
   font-weight: 400;
   font-size: 18px;

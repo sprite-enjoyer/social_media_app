@@ -1,0 +1,75 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+.main {
+  position: absolute;
+  height: 100%;
+  width: 300px;
+  right: 80px;
+  display: flex;
+  align-items: center;
+  color: white;
+
+  & * {
+    height: 100%;
+  }
+}
+
+.left {
+  @include abstracts.centeringStyle();
+  flex: 1 1;
+}
+
+
+.status-btn {
+  @include abstracts.resetButton($all: initial, $background-color: transparent);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  height: 70%;
+}
+
+.user-image {
+  height: 100%;
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+
+.middle {
+  @include abstracts.centeringStyle(column);
+  @include abstracts.myFont(600);
+  flex: 7 7;
+}
+
+.name {
+  @include abstracts.myFont(500);
+  @include abstracts.centeringStyle(column);
+  font-size: 18px;
+  justify-content: flex-end;
+}
+
+.title {
+  @include abstracts.myFont(200);
+  @include abstracts.centeringStyle();
+  font-size: 15px;
+}
+
+.right {
+  @include abstracts.centeringStyle();
+  position: relative;
+  min-width: 0;
+  flex: 1 1;
+}
+
+.dropdown-btn {
+  @include abstracts.resetButton($background-color: transparent);
+  @include abstracts.centeringStyle();
+  height: 80%;
+  min-width: 0;
+  aspect-ratio: 1;
+}
+
+.dropdown-img {
+  width: 100%;
+  filter: invert(1);
+  opacity: 0.5;
+}
