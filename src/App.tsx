@@ -1,11 +1,11 @@
-import SignInRoute from "./routes/SignInRoute";
+import ProfileRoute from "./routes/ProfileRoute";
 import styles from "./styles/app.module.scss";
 
 function App() {
 
   return (
     <div className={styles["main"]} >
-      <SignInRoute />
+      <ProfileRoute />
     </div>
   );
 };

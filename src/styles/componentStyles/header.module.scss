@@ -1,0 +1,111 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+.main {
+  @include abstracts.myFont(400);
+  width: 100%;
+  height: abstracts.$header-height;
+  background-color: abstracts.$header-dark-color;
+  display: flex;
+  font-size: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.logo-div {
+
+  width: 100%;
+  height: 100%;
+  flex: 1 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo-img {
+  height: 100%;
+}
+
+.page-name-div {
+  flex: 3 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.search-div {
+  flex: 8 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: abstracts.$header-light-color;
+}
+
+.search-input {
+  all: unset;
+  flex: 9 9;
+  height: 100%;
+  color: rgb(255, 255, 255);
+
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    border-radius: 50em;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+    filter: invert(1);
+    cursor: pointer;
+  }
+
+  &:focus::-webkit-search-cancel-button {
+    opacity: .3;
+    pointer-events: all;
+  }
+
+}
+
+.search-button {
+
+  all: unset;
+  flex: 1 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+}
+
+.search-image {
+  width: 60%;
+  height: 60%;
+  opacity: 0.5;
+}
+
+.find-friends-div {
+  flex: 2.5 2.5;
+}
+
+.find-friends-button {
+  all: unset;
+  height: 100%;
+  width: 100%;
+  color: white;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font: inherit;
+  cursor: pointer;
+}
+
+.right-div {
+  flex: 7 7;
+}

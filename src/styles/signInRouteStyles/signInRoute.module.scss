@@ -1,8 +1,8 @@
-@use "./mixins.module.scss" as mixins;
+@use "../abstracts/abstracts.module.scss" as abstracts;
 
 .main {
 
-  @include mixins.routeBaseStyle;
+  @include abstracts.routeBaseStyle;
   display: flex;
 
 

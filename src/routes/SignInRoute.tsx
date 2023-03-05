@@ -1,7 +1,7 @@
 import SignIn from "../components/SignIn";
 import SignUpModal from "../components/SignUpModal";
 import SignInStore from "../stores/SignInStore";
-import styles from "../styles/signInRoute.module.scss";
+import styles from "../styles/signInRouteStyles/signInRotue.module.scss";
 import { observer } from "mobx-react";
 
 const store = new SignInStore();

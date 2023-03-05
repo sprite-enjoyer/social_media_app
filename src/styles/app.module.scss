@@ -1,7 +1,7 @@
-@use "./mixins.module.scss" as mixins;
+@use "./abstracts/abstracts.module.scss" as abstracts;
 
 .main {
 
-  @include mixins.routeBaseStyle;
-  user-select: none;
+  @include abstracts.routeBaseStyle;
+  height: auto;
 }

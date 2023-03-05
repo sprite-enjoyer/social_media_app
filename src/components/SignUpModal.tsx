@@ -1,4 +1,4 @@
-import styles from "../styles/signUpModal.module.scss";
+import styles from "../styles/signInRouteStyles/signUpModal.module.scss";
 import { observer } from "mobx-react";
 import SignInStore from "../stores/SignInStore";
 

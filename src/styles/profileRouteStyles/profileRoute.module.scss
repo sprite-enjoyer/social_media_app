@@ -1,0 +1,9 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+
+.main {
+
+  @include abstracts.routeBaseStyle;
+  display: flex;
+  position: static;
+}

@@ -1,5 +1,4 @@
-@use "./mixins.module.scss" as mixins;
-@use "./palette.module.scss" as palette;
+@use "../abstracts/abstracts.module.scss" as abstracts;
 
 @mixin baseInputStyles {
   width: 100%;
@@ -19,7 +18,7 @@
 }
 
 .main {
-  @include palette.myFont(400);
+  @include abstracts.myFont(400);
   padding: 10%;
   display: flex;
   flex-direction: column;
@@ -31,7 +30,7 @@
 .title {
   display: flex;
   justify-content: center;
-  @include palette.myFont(700);
+  @include abstracts.myFont(700);
   font-style: normal;
   font-size: 56px;
   line-height: 68px;
@@ -58,14 +57,14 @@
 
 .google-btn {
   all: unset;
-  @include mixins.signInButtonStyle;
-  @include palette.myFont(400);
+  @include abstracts.signInButtonStyle;
+  @include abstracts.myFont(400);
 }
 
 .facebook-btn {
   all: unset;
-  @include mixins.signInButtonStyle;
-  @include palette.myFont(400);
+  @include abstracts.signInButtonStyle;
+  @include abstracts.myFont(400);
   background: #4267B2;
   color: white;
 }
@@ -79,7 +78,7 @@
 }
 
 .label {
-  @include palette.myFont(600);
+  @include abstracts.myFont(600);
   color: #4A4A4A;
   width: 100%;
   font-size: 18px;
@@ -139,7 +138,7 @@
 }
 
 .checkbox {
-  background: palette.$accent;
+  background: abstracts.$accent-color;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   height: 25px;
@@ -149,7 +148,7 @@
 .forgot-password {
   all: unset;
   cursor: pointer;
-  color: palette.$accent;
+  color: abstracts.$accent-color;
   font-weight: 500;
   font-size: 18px;
   line-height: 28px;
@@ -158,7 +157,7 @@
 .btn {
 
   all: unset;
-  background: palette.$accent;
+  background: abstracts.$accent-color;
   color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
@@ -190,5 +189,5 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 28px;
-  color: palette.$accent;
+  color: abstracts.$accent-color;
 }

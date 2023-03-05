@@ -1,4 +1,4 @@
-import styles from "../styles/signIn.module.scss";
+import styles from "../styles/signInRouteStyles/signIn.module.scss";
 import googleImg from "../assets/oauth_icons/google.svg";
 import facebookImg from "../assets/oauth_icons/facebook.svg";
 import showPassword from "../assets/icons/show_password.svg";
