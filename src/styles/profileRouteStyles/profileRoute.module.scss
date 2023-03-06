@@ -1,13 +1,14 @@
 @use "../abstracts/abstracts.module.scss" as abstracts;
 
-
 .main {
-
-  @include abstracts.routeBaseStyle;
-  display: flex;
-  position: static;
+  @include abstracts.routeBaseStyle();
+  height: auto;
 }
 
+.bottom {
+  display: flex;
+  height: auto;
+}
 
 .body {
   flex: 21 21;

@@ -1,12 +1,22 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ProfileRoute from "./routes/ProfileRoute";
-import styles from "./styles/app.module.scss";
+import SignInRoute from "./routes/SignInRoute";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <SignInRoute />
+  },
+  {
+    path: "/profile/:userID",
+    element: <ProfileRoute />
+  }
+]);
 
 function App() {
 
   return (
-    <div className={styles["main"]} >
-      <ProfileRoute />
-    </div>
+    <RouterProvider router={router} />
   );
 };
 

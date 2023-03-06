@@ -1,13 +1,13 @@
 @use "../abstracts/abstracts.module.scss" as abstracts;
 
 .main {
-  position: absolute;
   height: 100%;
   width: 300px;
   right: 80px;
   display: flex;
   align-items: center;
   color: white;
+  margin-left: 20px;
 
   & * {
     height: 100%;

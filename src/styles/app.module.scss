@@ -1,7 +1,0 @@
-@use "./abstracts/abstracts.module.scss" as abstracts;
-
-.main {
-
-  @include abstracts.routeBaseStyle;
-  height: auto;
-}

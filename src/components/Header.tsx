@@ -38,6 +38,13 @@ const Header = () => {
         </button>
       </div>
       <div className={styles["right-div"]} >
+        <button className={styles["profile-btn"]} >
+          <img
+            className={styles["profile-img"]}
+            src={profileSvg}
+            alt="profile button image"
+          />
+        </button>
         <button className={styles["notifications-btn"]}>
           <img
             className={styles["notifications-img"]}
@@ -50,13 +57,6 @@ const Header = () => {
             className={styles["messages-img"]}
             src={messagesSvg}
             alt="messages icon"
-          />
-        </button>
-        <button className={styles["profile-btn"]} >
-          <img
-            className={styles["profile-img"]}
-            src={profileSvg}
-            alt="profile button image"
           />
         </button>
         <HeaderDropDown />
