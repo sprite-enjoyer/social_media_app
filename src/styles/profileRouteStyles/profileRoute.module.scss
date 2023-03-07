@@ -11,6 +11,9 @@
 }
 
 .body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   flex: 21 21;
   padding: 20px 15px 0 15px;
   background-color: abstracts.$body-background-color;

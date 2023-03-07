@@ -1,5 +1,5 @@
-import SignIn from "../components/SignIn";
-import SignUpModal from "../components/SignUpModal";
+import SignIn from "../components/signInRoute/SignIn";
+import SignUpModal from "../components/signInRoute/SignUpModal";
 import SignInStore from "../stores/SignInStore";
 import styles from "../styles/signInRouteStyles/signInRoute.module.scss";
 import { observer } from "mobx-react";

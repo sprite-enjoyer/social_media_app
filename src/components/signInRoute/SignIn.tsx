@@ -1,9 +1,9 @@
-import styles from "../styles/signInRouteStyles/signIn.module.scss";
-import googleImg from "../assets/oauth_icons/google.svg";
-import facebookImg from "../assets/oauth_icons/facebook.svg";
-import showPassword from "../assets/icons/show_password.svg";
-import hidePassword from "../assets/icons/hide_password.svg";
-import SignInStore from "../stores/SignInStore";
+import styles from "../../styles/signInRouteStyles/signIn.module.scss";
+import googleImg from "../../assets/oauth_icons/google.svg";
+import facebookImg from "../../assets/oauth_icons/facebook.svg";
+import showPassword from "../../assets/icons/show_password.svg";
+import hidePassword from "../../assets/icons/hide_password.svg";
+import SignInStore from "../../stores/SignInStore";
 import { observer } from "mobx-react";
 
 

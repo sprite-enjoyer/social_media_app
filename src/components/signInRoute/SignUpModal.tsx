@@ -1,6 +1,6 @@
-import styles from "../styles/signInRouteStyles/signUpModal.module.scss";
+import styles from "../../styles/signInRouteStyles/signUpModal.module.scss";
 import { observer } from "mobx-react";
-import SignInStore from "../stores/SignInStore";
+import SignInStore from "../../stores/SignInStore";
 
 export interface SignUpModalProps {
   store: SignInStore

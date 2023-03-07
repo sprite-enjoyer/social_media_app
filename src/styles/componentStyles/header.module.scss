@@ -113,17 +113,9 @@
   @include headerButtonStyles(80%);
 }
 
-.notifications-img {
-  @include headerButtonImgStyles;
-}
-
 .messages-btn {
   @include headerButtonStyles(75%);
 
-}
-
-.messages-img {
-  @include headerButtonImgStyles;
 }
 
 .profile-btn {
@@ -131,6 +123,8 @@
   margin-left: 5px;
 }
 
+.notifications-img,
+.messages-img,
 .profile-img {
   @include headerButtonImgStyles;
 }

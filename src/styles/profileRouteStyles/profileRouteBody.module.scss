@@ -1,0 +1,26 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+.main {
+  @include abstracts.centeringStyle(column);
+  width: 90%;
+  outline: 2px solid slateblue;
+}
+
+.bottom {
+  @include abstracts.centeringStyle(row);
+
+  &__left {
+    flex: 1 1;
+    outline: 2px solid plum;
+  }
+
+  &__middle {
+    flex: 2 2;
+    outline: 2px solid palegreen;
+  }
+
+  &__right {
+    flex: 1 1;
+    outline: 2px solid salmon;
+  }
+}
