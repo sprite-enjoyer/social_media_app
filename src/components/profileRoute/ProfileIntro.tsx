@@ -1,5 +1,4 @@
 import styles from "../../styles/profileRouteStyles/profileIntro.module.scss";
-import ReactNodeListVerticalRenderer from "../ReactNodeListVerticalRenderer";
 
 export interface ProfileIntroProps {
   content: { title: string, description: string, key: string | number }[];
@@ -7,21 +6,26 @@ export interface ProfileIntroProps {
 
 const ProfileIntro = ({ content }: ProfileIntroProps) => {
 
-  const infoSections = content.map((section, i) =>
-    <div key={section.key} className={styles["profile-section"]} >
-      <div className={"profile-section__top"} >
-        {section.title}
-      </div>
-      <div className={"profile-section__bottom"} >
-        {section.description}
-      </div>
-    </div>
-  );
-
   return (
     <div className={styles["main"]} >
-      <ReactNodeListVerticalRenderer children={infoSections} />
-
+      <div className={styles["main__title"]} >
+        Profile Intro
+      </div>
+      <hr className={styles["main__line"]} />
+      <div className={styles["main__content"]} >
+        {
+          content.map((section, i) =>
+            <div key={section.key} className={styles["profile-section"]} >
+              <div className={styles["profile-section__top"]} >
+                {section.title}
+              </div>
+              <div className={styles["profile-section__bottom"]} >
+                {section.description}
+              </div>
+            </div>
+          )
+        }
+      </div>
     </div>
   );
 };

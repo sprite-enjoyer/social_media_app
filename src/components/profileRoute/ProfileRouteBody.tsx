@@ -1,5 +1,4 @@
 import styles from "../../styles/profileRouteStyles/profileRouteBody.module.scss";
-import ReactNodeListVerticalRenderer from "../ReactNodeListVerticalRenderer";
 import ProfileIntro from "./ProfileIntro";
 import ProfileRouteUserPanel from "./ProfileRouteUserPanel";
 
@@ -8,18 +7,13 @@ const ProfileRouteBody = () => {
     <div className={styles["main"]} >
       <ProfileRouteUserPanel />
       <div className={styles["bottom"]} >
-        <ReactNodeListVerticalRenderer
-          children={[<ProfileIntro content={testInformation} />]}
-          className={styles["bottom__left"]}
-        />
-        <ReactNodeListVerticalRenderer
-          children={[<div key={1}>1</div>, <div key={2}>2</div>]}
-          className={styles["bottom__middle"]}
-        />
-        <ReactNodeListVerticalRenderer
-          children={[<div key={1}>1</div>, <div key={2}>2</div>]}
-          className={styles["bottom__right"]}
-        />
+        <div className={styles["bottom__left"]}>
+          <ProfileIntro content={testInformation} />
+        </div >
+        <div className={styles["bottom__middle"]} >
+        </div>
+        <div className={styles["bottom__right"]} >
+        </div>
       </div>
     </div>
   );
