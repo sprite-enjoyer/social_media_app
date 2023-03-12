@@ -50,21 +50,11 @@
 }
 
 .google-btn {
-  @include abstracts.resetButton($border-radius: 6px);
-  @include abstracts.myFont(400);
-  @include abstracts.centeringStyle();
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 15px 20px 15px 20px;
-  gap: 10px;
+  @include abstracts.googleButtonStyles;
 }
 
 .facebook-btn {
-  @include abstracts.resetButton($border-radius: 6px, $background-color: #4267B2, $color: white);
-  @include abstracts.myFont(400);
-  @include abstracts.centeringStyle();
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 15px 20px 15px 20px;
-  gap: 10px;
+  @include abstracts.facebookButtonStyles;
 }
 
 .inputs {

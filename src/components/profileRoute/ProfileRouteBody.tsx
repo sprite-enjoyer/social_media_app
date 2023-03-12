@@ -1,5 +1,5 @@
 import styles from "../../styles/profileRouteStyles/profileRouteBody.module.scss";
-import ProfileIntro from "./ProfileIntro";
+import ProfileIntro, { ProfileIntroInformation, ProfileIntroNetwork } from "./ProfileIntro";
 import ProfileRouteUserPanel from "./ProfileRouteUserPanel";
 
 const ProfileRouteBody = () => {
@@ -8,7 +8,7 @@ const ProfileRouteBody = () => {
       <ProfileRouteUserPanel />
       <div className={styles["bottom"]} >
         <div className={styles["bottom__left"]}>
-          <ProfileIntro content={testInformation} />
+          <ProfileIntro content={testInformation} networks={testNetworks} />
         </div >
         <div className={styles["bottom__middle"]} >
         </div>
@@ -19,7 +19,7 @@ const ProfileRouteBody = () => {
   );
 };
 
-const testInformation = [
+const testInformation: ProfileIntroInformation[] = [
   {
     title: "Test",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ipsa cupiditate, vitae, itaque maiores.",
@@ -37,5 +37,20 @@ const testInformation = [
   },
 ];
 
+const testNetworks: ProfileIntroNetwork[] = [
+  {
+    networkName: "Facebook",
+    link: "https://www.facebook.com/saba.samxaradze.750"
+  },
+  {
+    networkName: "Instagram",
+    link: "https://www.instagram.com/sprite_enjoyerr/"
+
+  },
+  {
+    networkName: "Twitter",
+    link: "https://twitter.com/sprite__enjoyer"
+  }
+]
 
 export default ProfileRouteBody;
