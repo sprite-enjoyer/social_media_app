@@ -42,6 +42,7 @@
   @include resetButton($border-radius: 6px);
   @include myFont(400);
   @include centeringStyle();
+  box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 15px 20px 15px 20px;
   gap: 10px;
@@ -51,7 +52,8 @@
   @include resetButton($border-radius: 6px, $background-color: #4267B2, $color: white);
   @include myFont(400);
   @include centeringStyle();
+  box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 15px 20px 15px 20px;
+  padding: 15px 10px 15px 10px;
   gap: 10px;
 }

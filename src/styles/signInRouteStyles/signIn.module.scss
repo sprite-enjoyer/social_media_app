@@ -20,8 +20,9 @@
 .main {
   @include abstracts.myFont(400);
   @include abstracts.centeringStyle(column);
-  padding: 10%;
+  padding: 5% 5% 0 5%;
   user-select: none;
+
 }
 
 .title {
@@ -45,16 +46,25 @@
 
 .signInButtons {
   @include abstracts.centeringStyle();
-  margin: 10% 0 10% 0;
+  margin: 5% 0 5% 0;
   gap: 10px;
+  height: 100px;
 }
 
 .google-btn {
   @include abstracts.googleButtonStyles;
+  flex: 1 1;
 }
 
 .facebook-btn {
   @include abstracts.facebookButtonStyles;
+  height: 55px;
+  flex: 1 1;
+}
+
+.facebook-img {
+  display: block;
+  height: 35px;
 }
 
 .inputs {
@@ -63,6 +73,7 @@
   flex-direction: column;
   gap: 25px;
   margin-bottom: 10px;
+  width: 90%
 }
 
 .label {

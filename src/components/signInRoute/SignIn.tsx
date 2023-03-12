@@ -29,8 +29,8 @@ const SignIn = ({ store }: SignInProps) => {
           <span>Sign in with Google</span>
         </button>
         <button className={styles["facebook-btn"]} >
-          <img src={facebookImg} alt="facebook logo" />
-          <span>Sign in with Facebook</span>
+          <img className={styles["facebook-img"]} src={facebookImg} alt="facebook logo" />
+          <span className={styles["facebook-txt"]} >Sign in with Facebook</span>
         </button>
       </div>
       <div className={styles["inputs"]} >
