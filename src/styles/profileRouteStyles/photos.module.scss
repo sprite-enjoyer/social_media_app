@@ -1,0 +1,25 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+.main {
+  @include abstracts.profileRouteComponentBaseStyles();
+  @include abstracts.centeringStyle(column);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 10px 0 10px 0;
+}
+
+.badge {
+  @include abstracts.centeringStyle();
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+
+.image {
+  max-height: 100%;
+  border-radius: 2px;
+}

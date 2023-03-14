@@ -28,7 +28,6 @@
   border-radius: $border-radius;
   cursor: $cursor;
   user-select: none;
-
 }
 
 @mixin centeringStyle($flex-direction: row) {
@@ -56,4 +55,11 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 15px 10px 15px 10px;
   gap: 10px;
+}
+
+@mixin profileRouteComponentBaseStyles {
+  background-color: white;
+  border-radius: 4px;
+  margin: 15px;
+  padding: 0 8% 4% 8%;
 }

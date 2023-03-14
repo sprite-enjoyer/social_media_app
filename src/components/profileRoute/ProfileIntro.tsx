@@ -1,4 +1,5 @@
 import styles from "../../styles/profileRouteStyles/profileIntro.module.scss";
+import ProfileComponentTitle from "./ProfileComponentTitle";
 
 export type ProfileIntroInformation = { title: string, description: string, key: string | number };
 export type SocialNetwork = "Facebook" | "Twitter" | "Instagram";
@@ -13,10 +14,7 @@ const ProfileIntro = ({ content, networks }: ProfileIntroProps) => {
 
   return (
     <div className={styles["main"]} >
-      <div className={styles["main__title"]} >
-        Profile Intro
-      </div>
-      <hr className={styles["main__line"]} />
+      <ProfileComponentTitle title="Profile Intro" />
       <div className={styles["main__content"]} >
         {
           content.map((section, i) =>
@@ -56,5 +54,6 @@ const ProfileIntro = ({ content, networks }: ProfileIntroProps) => {
     </div>
   );
 };
+
 
 export default ProfileIntro;

@@ -1,4 +1,5 @@
 import styles from "../../styles/profileRouteStyles/profileRouteBody.module.scss";
+import Photos from "./Photos";
 import ProfileIntro, { ProfileIntroInformation, ProfileIntroNetwork } from "./ProfileIntro";
 import ProfileRouteUserPanel from "./ProfileRouteUserPanel";
 
@@ -13,6 +14,7 @@ const ProfileRouteBody = () => {
         <div className={styles["bottom__middle"]} >
         </div>
         <div className={styles["bottom__right"]} >
+          <Photos photos={testPhotos} />
         </div>
       </div>
     </div>
@@ -51,6 +53,11 @@ const testNetworks: ProfileIntroNetwork[] = [
     networkName: "Twitter",
     link: "https://twitter.com/sprite__enjoyer"
   }
-]
+];
+
+const testPhotos: { src: string, alt: string }[] = [
+  { src: "https://ychef.files.bbci.co.uk/976x549/p02k33hl.jpg", alt: "mona lisa" },
+  { src: "https://the-decoder.com/wp-content/uploads/2022/09/mona_lisa_dall_e_2_title.jpg", alt: "mona lisa" },
+];
 
 export default ProfileRouteBody;
