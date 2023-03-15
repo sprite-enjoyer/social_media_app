@@ -1,0 +1,87 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+.main {
+  @include abstracts.profileRouteComponentBaseStyles();
+}
+
+.content {
+  @include abstracts.centeringStyle(column);
+  position: relative;
+  width: 100%;
+  gap: 5px;
+}
+
+.page-container {
+  @include abstracts.centeringStyle();
+  width: 100%;
+  height: 70px;
+  justify-content: space-between;
+
+  &__left {
+    @include abstracts.centeringStyle();
+    @include abstracts.myFont(400);
+    justify-content: flex-start;
+    height: 80px;
+    flex: 4 4;
+    gap: 10px;
+
+    &__image-container {
+      @include abstracts.centeringStyle();
+      overflow: hidden;
+      height: 100%;
+
+      &__image {
+        width: 40px;
+        height: auto;
+        border-radius: 50%;
+        aspect-ratio: 1;
+      }
+    }
+
+    &__names {
+      @include abstracts.centeringStyle(column);
+      height: 100%;
+      gap: 2px;
+
+      &__name {
+        @include abstracts.myFont(500);
+      }
+
+      &__type {
+        @include abstracts.myFont(300);
+        color: gray;
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__right {
+    @include abstracts.centeringStyle();
+    flex: 1 1;
+
+    &__btn {
+      @include abstracts.resetButton($background-color: transparent);
+    }
+  }
+}
+
+.star {
+
+  &__svg {
+    &__on {
+      stroke: abstracts.$accent-color;
+    }
+
+    &__off {
+      stroke: black;
+    }
+  }
+}
+
+
+.line {
+  margin: 0 0 5% 0;
+  width: 120%;
+  opacity: 0.2;
+  background-color: rgb(128, 128, 128);
+}

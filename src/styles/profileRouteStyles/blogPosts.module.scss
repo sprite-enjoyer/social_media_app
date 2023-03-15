@@ -1,0 +1,46 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+.main {
+  @include abstracts.profileRouteComponentBaseStyles();
+}
+
+.content {
+  @include abstracts.centeringStyle(column);
+  gap: 35px;
+}
+
+.blog {
+  @include abstracts.myFont(400);
+  @include abstracts.centeringStyle(column);
+  position: relative;
+  align-items: flex-start;
+  padding: 0 0 30px 0;
+  gap: 15px;
+
+  &__title {
+    @include abstracts.myFont(200);
+    display: block;
+    font-size: 2em;
+  }
+
+  &__description {
+    @include abstracts.myFont(300);
+    color: gray;
+  }
+
+  &__time {
+    @include abstracts.myFont(300);
+    color: rgb(199, 199, 199);
+    display: block;
+  }
+
+  &__line {
+    align-self: center;
+    position: absolute;
+    width: 120%;
+    bottom: -20px;
+    opacity: 0.2;
+    background-color: rgb(128, 128, 128);
+    margin: 0 0 5% 0;
+  }
+}

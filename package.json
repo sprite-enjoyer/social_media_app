@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@svgr/webpack": "^6.5.1",
     "@types/react-router-dom": "^5.3.3",
     "mobx": "^6.8.0",
     "mobx-react": "^7.6.0",

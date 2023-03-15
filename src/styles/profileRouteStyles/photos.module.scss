@@ -2,7 +2,6 @@
 
 .main {
   @include abstracts.profileRouteComponentBaseStyles();
-  @include abstracts.centeringStyle(column);
 }
 
 .grid {

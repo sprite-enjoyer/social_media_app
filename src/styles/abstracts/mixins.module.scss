@@ -58,6 +58,7 @@
 }
 
 @mixin profileRouteComponentBaseStyles {
+  @include centeringStyle(column);
   background-color: white;
   border-radius: 4px;
   margin: 15px;

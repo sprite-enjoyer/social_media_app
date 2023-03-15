@@ -1,0 +1,30 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+
+.main {
+  @include abstracts.profileRouteComponentBaseStyles();
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  margin: 15px 0 10px 0;
+
+  &__friend {
+    overflow: hidden;
+
+    &__link {
+      all: unset;
+      @include abstracts.centeringStyle();
+      display: block;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+
+      &__image {
+        max-width: 100%;
+      }
+    }
+  }
+}
