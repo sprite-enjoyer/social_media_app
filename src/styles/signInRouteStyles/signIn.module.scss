@@ -28,12 +28,9 @@
 .title {
   display: flex;
   justify-content: center;
-  @include abstracts.myFont(700);
-  font-style: normal;
-  font-size: 56px;
+  @include abstracts.myFont(700, 56px, #2C2738);
   line-height: 68px;
   text-align: center;
-  color: #2C2738;
   margin: 0;
   margin-bottom: 10px;
 }
@@ -77,10 +74,8 @@
 }
 
 .label {
-  @include abstracts.myFont(600);
-  color: #4A4A4A;
+  @include abstracts.myFont(600, 18px, #4A4A4A);
   width: 100%;
-  font-size: 18px;
 }
 
 .email {

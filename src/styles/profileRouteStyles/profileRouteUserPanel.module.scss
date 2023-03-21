@@ -86,13 +86,11 @@
       gap: 10px;
 
       &__name {
-        @include abstracts.myFont(600);
-        font-size: 24px;
+        @include abstracts.myFont(600, 24px);
       }
 
       &__location {
-        @include abstracts.myFont(300);
-        font-size: 16px;
+        @include abstracts.myFont(300, 16px);
       }
     }
   }
@@ -109,7 +107,7 @@
       width: 30px;
       padding: 10px;
       border-radius: 50%;
-      outline: 2px solid abstracts.$accent-color;
+      outline: 1px solid abstracts.$accent-color;
       aspect-ratio: 1;
 
       &__image {

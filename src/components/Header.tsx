@@ -3,8 +3,8 @@ import HeaderDropDown from "./HeaderDropDown";
 import logo from "../assets/icons/logo.svg";
 import searchSvg from "../assets/icons/search.svg";
 import notificationsSvg from "../assets/icons/notifications.svg";
-import messagesSvg from "../assets/icons/messages.svg";
 import profileSvg from "../assets/icons/profile.svg";
+import MessagesSvg from "./svg/MessagesSvg";
 
 const Header = () => {
 
@@ -53,11 +53,7 @@ const Header = () => {
           />
         </button>
         <button className={styles["messages-btn"]} >
-          <img
-            className={styles["messages-img"]}
-            src={messagesSvg}
-            alt="messages icon"
-          />
+          <MessagesSvg fill={"none"} stroke={"gray"} strokeWidth={3} width={"auto"} height={"35px"} />
         </button>
         <HeaderDropDown />
       </div>

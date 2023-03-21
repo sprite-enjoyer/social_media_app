@@ -11,21 +11,19 @@
 
   &__left {
     flex: 2 2;
-    outline: 2px solid black;
     height: 2800px;
     margin-bottom: 100px;
   }
 
   &__middle {
     flex: 5 5;
-    outline: 2px solid palegreen;
     height: 2800px;
     margin-bottom: 100px;
+    margin-top: 50px;
   }
 
   &__right {
     flex: 2 2;
-    outline: 2px solid salmon;
     height: 2800px;
     margin-bottom: 100px;
   }

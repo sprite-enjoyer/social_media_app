@@ -18,19 +18,16 @@
   gap: 15px;
 
   &__title {
-    @include abstracts.myFont(200);
+    @include abstracts.myFont(200, 1.7em);
     display: block;
-    font-size: 2em;
   }
 
   &__description {
-    @include abstracts.myFont(300);
-    color: gray;
+    @include abstracts.myFont(300, 14px, gray);
   }
 
   &__time {
-    @include abstracts.myFont(300);
-    color: rgb(199, 199, 199);
+    @include abstracts.myFont(300, 12px, rgb(199, 199, 199));
     display: block;
   }
 

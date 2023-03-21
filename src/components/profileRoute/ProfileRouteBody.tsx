@@ -1,10 +1,12 @@
 import styles from "../../styles/profileRouteStyles/profileRouteBody.module.scss";
+import Post, { PostProps } from "../Post";
 import BlogPosts, { ProfileRouteBlog } from "./BlogPosts";
-import FavouritePages, { ProfileRouteFavouritePage } from "./FavouritePages";
 import FriendsList, { ProfileRouteFriend } from "./FriendsList";
 import Photos from "./Photos";
 import ProfileIntro, { ProfileIntroInformation, ProfileIntroNetwork } from "./ProfileIntro";
 import ProfileRouteUserPanel from "./ProfileRouteUserPanel";
+import profilePicture from "../../assets/images/profile_picture.jpg";
+import FavouritePages from "./FavouritePages";
 
 const ProfileRouteBody = () => {
   return (
@@ -15,6 +17,8 @@ const ProfileRouteBody = () => {
           <ProfileIntro content={testInformation} networks={testNetworks} />
         </div >
         <div className={styles["bottom__middle"]} >
+          {/* <PostList posts={testPostList} /> */}
+          <Post {...testPostList[0]} />
         </div>
         <div className={styles["bottom__right"]} >
           <Photos photos={testPhotos} />
@@ -135,7 +139,7 @@ const testFriends: ProfileRouteFriend[] = [
   },
 ];
 
-const testFavouritePages: ProfileRouteFavouritePage[] = [
+const testFavouritePages = [
   {
     name: "some page",
     type: "bar/restaurant",
@@ -165,8 +169,168 @@ const testFavouritePages: ProfileRouteFavouritePage[] = [
     type: "bar/restaurant",
     imageSrc: "https://i.pinimg.com/originals/af/b1/8a/afb18a87a1158781fe9a364444532c37.png",
     imageAlt: "page logo",
+  },
+];
+
+const testPostList: PostProps[] = [
+  {
+    userName: "Mona Lisa",
+    date: "October 25, 2022",
+    postData: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia beatae dolorum recusandae esse. Cum expedita cumque nemo, quis praesentium quisquam sit ipsa modi facilis ab in laborum impedit, ratione voluptatem! Corrupti voluptatum eveniet, delectus nostrum blanditiis nobis veniam quasi quas eum amet fugit, cum atque! Error, atque excepturi! Est, cumque!",
+    peopleWhoLiked: [
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+
+    ],
+    comments: [{}],
+    shares: [{}],
+    userImageSrc: profilePicture
+  },
+  {
+    userName: "Mona Lisa",
+    date: "October 25, 2022",
+    postData: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, assumenda.",
+    peopleWhoLiked: [
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+
+    ],
+    comments: [{}],
+    shares: [{}],
+    userImageSrc: profilePicture
+  },
+  {
+    userName: "Mona Lisa",
+    date: "October 25, 2022",
+    postData: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, assumenda.",
+    peopleWhoLiked: [
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+
+    ],
+    comments: [{}],
+    shares: [{}],
+    userImageSrc: profilePicture
+  },
+  {
+    userName: "Mona Lisa",
+    date: "October 25, 2022",
+    postData: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, assumenda.",
+    peopleWhoLiked: [
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+
+    ],
+    comments: [{}],
+    shares: [{}],
+    userImageSrc: profilePicture
+  },
+  {
+    userName: "Mona Lisa",
+    date: "October 25, 2022",
+    postData: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, assumenda.",
+    peopleWhoLiked: [
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+      {
+        name: "jenna annej",
+        imageSrc: "https://i.stack.imgur.com/9Evvf.png?s=192&g=1",
+      },
+
+    ],
+    comments: [{}],
+    shares: [{}],
+    userImageSrc: profilePicture
   },
 
 ];
+
+
 
 export default ProfileRouteBody;

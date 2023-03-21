@@ -41,16 +41,14 @@
 }
 
 .name {
-  @include abstracts.myFont(500);
+  @include abstracts.myFont(500, 18px, white, 1);
   @include abstracts.centeringStyle(column);
-  font-size: 18px;
   justify-content: flex-end;
 }
 
 .title {
-  @include abstracts.myFont(200);
+  @include abstracts.myFont(200, 15px, white);
   @include abstracts.centeringStyle();
-  font-size: 15px;
 }
 
 .right {

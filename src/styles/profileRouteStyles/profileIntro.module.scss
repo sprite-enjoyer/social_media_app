@@ -19,20 +19,16 @@
   gap: 10px;
 
   &__top {
-    @include abstracts.myFont(400);
-    font-size: 14px;
+    @include abstracts.myFont(400, 14px);
   }
 
   &__bottom {
-    @include abstracts.myFont(400);
-    color: gray;
-    font-size: 12px;
+    @include abstracts.myFont(400, 14px, $color: gray);
   }
 }
 
 .other-networks-title {
-  @include abstracts.myFont(400);
-  font-size: 14px;
+  @include abstracts.myFont(400, 14px);
   width: 100%;
   box-sizing: border-box;
   margin: 10% 0 5% 0;
