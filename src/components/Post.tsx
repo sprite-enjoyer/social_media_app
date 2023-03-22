@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import styles from "../styles/componentStyles/post.module.scss";
+import CommentsSvg from "./svg/CommentsSvg";
 import HeartSvg from "./svg/HeartSvg";
+import ShareSvg from "./svg/ShareSvg";
 
 export interface PostProps {
   userName: string,
@@ -63,7 +65,7 @@ const Post = ({ userName, date, postData, peopleWhoLiked, comments, shares, user
       <div className={styles["bottom"]} >
         <div className={styles["bottom__left"]}>
           <div className={styles["bottom__left__likes"]} >
-            <HeartSvg fill={"none"} stroke={"gray"} strokeWidth={2} width={"25px"} height={"auto"} />
+            <HeartSvg fill={"none"} stroke={"gray"} strokeWidth={2} width={"25px"} height={"100%"} />
             <span className={styles["bottom__left__likes__count"]} >
               {/*  TODO   */}{8}
             </span>
@@ -86,12 +88,25 @@ const Post = ({ userName, date, postData, peopleWhoLiked, comments, shares, user
         </div>
         <div className={styles["bottom__right"]}>
           <div className={styles["comments"]} >
-
-
-
+            <CommentsSvg
+              fill={"none"}
+              stroke={"rgb(254, 91, 56)"}
+              strokeWidth={2}
+              width={"30px"}
+              height={"100%"} />
           </div>
           <div className={styles["shares"]} >
-
+            <ShareSvg
+              width={"26px"}
+              height={"100%"}
+              fill={"none"}
+              stroke={"rgb(254, 91, 56)"}
+              stroke2={"rgb(254, 91, 56)"}
+              stroke3={"rgb(254, 91, 56)"}
+              strokeWidth={2}
+              strokeWidth2={2}
+              strokeWidth3={2}
+            />
           </div>
         </div>
       </div>

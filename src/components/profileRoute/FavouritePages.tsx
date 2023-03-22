@@ -40,7 +40,7 @@ const FavouritePages = ({ pages }: FavouritePagesProps) => {
                 </div>
                 <div className={styles["page-container__right"]} >
                   <button className={styles["page-container__right__btn"]} >
-                    <StarSvg fill={"white"} stroke={"orange"} strokeWidth={2} width={"20"} height={"auto"} />
+                    <StarSvg fill={"white"} stroke={"orange"} strokeWidth={2} width={"20"} height={"100%"} />
                   </button>
                 </div>
               </div>

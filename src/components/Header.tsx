@@ -1,20 +1,23 @@
 import styles from "../styles/componentStyles/header.module.scss";
 import HeaderDropDown from "./HeaderDropDown";
-import logo from "../assets/icons/logo.svg";
 import searchSvg from "../assets/icons/search.svg";
-import notificationsSvg from "../assets/icons/notifications.svg";
-import profileSvg from "../assets/icons/profile.svg";
 import MessagesSvg from "./svg/MessagesSvg";
+import NotificationsSvg from "./svg/NotificationsSvg";
+import LogoSvg from "./svg/LogoSvg";
 
 const Header = () => {
 
   return (
     <div className={styles["main"]} >
       <div className={styles["logo-div"]} >
-        <img
-          className={styles["logo-img"]}
-          src={logo}
-          alt="website logo"
+        <LogoSvg
+          stroke={"white"}
+          strokeWidth={1}
+          strokeWidth2={1}
+          fill={"white"}
+          width={"50px"}
+          height={"100%"}
+          fill2={"white"}
         />
       </div>
       <div className={styles["page-name-div"]} >
@@ -38,22 +41,20 @@ const Header = () => {
         </button>
       </div>
       <div className={styles["right-div"]} >
-        <button className={styles["profile-btn"]} >
-          <img
-            className={styles["profile-img"]}
-            src={profileSvg}
-            alt="profile button image"
-          />
-        </button>
         <button className={styles["notifications-btn"]}>
-          <img
-            className={styles["notifications-img"]}
-            src={notificationsSvg}
-            alt="messages icon"
+          <NotificationsSvg
+            width={"50px"}
+            height={"100%"}
+            fill={"none"}
+            fill2={"none"}
+            stroke={"rgba(254, 91, 56, 0.9)"}
+            stroke2={"black"}
+            strokeWidth={1.5}
+            strokeWidth2={2}
           />
         </button>
         <button className={styles["messages-btn"]} >
-          <MessagesSvg fill={"none"} stroke={"gray"} strokeWidth={3} width={"auto"} height={"35px"} />
+          <MessagesSvg fill={"rgba(254, 92, 56, 0.9)"} stroke={"black"} strokeWidth={2} width={"100%"} height={"40px"} />
         </button>
         <HeaderDropDown />
       </div>

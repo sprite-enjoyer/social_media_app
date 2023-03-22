@@ -26,10 +26,10 @@
 
 .logo-div {
   @include abstracts.centeringStyle();
-  justify-content: flex-start;
   width: 100%;
   height: 100%;
-  flex: 1.2 1.2;
+  flex: 0.8 0.8;
+  background-color: abstracts.$accent-color;
 }
 
 .logo-img {
@@ -109,18 +109,12 @@
 }
 
 .notifications-btn {
-  @include headerButtonStyles(80%);
+  @include headerButtonStyles(100%);
 }
 
 .messages-btn {
   @include headerButtonStyles(75%);
   @include abstracts.centeringStyle();
-  filter: invert(1);
-}
-
-.profile-btn {
-  @include headerButtonStyles(70%);
-  margin-left: 5px;
 }
 
 .notifications-img,

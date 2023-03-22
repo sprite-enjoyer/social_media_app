@@ -1,5 +1,4 @@
 import styles from "../styles/componentStyles/headerDropDown.module.scss";
-import dummyUserSvg from "../assets/icons/test-user.svg";
 import dropDownSvg from "../assets/icons/dropdown.svg";
 
 const HeaderDropDown = () => {
@@ -9,7 +8,7 @@ const HeaderDropDown = () => {
         <button className={styles["status-btn"]} >
           <img
             className={styles["user-image"]}
-            src={dummyUserSvg}
+            src="/src/assets/images/profile_picture.jpg"
             alt="user image"
           />
         </button>

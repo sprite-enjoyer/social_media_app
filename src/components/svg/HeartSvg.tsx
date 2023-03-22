@@ -13,7 +13,7 @@ const HeartSvg = ({ fill, stroke, strokeWidth, width, height }: BaseSvgProps) =>
           d="M16 5.30451C14.407 3.87551 12.309 2.99951 10 2.99951C5.029 2.99951 1 7.02951 1 11.9995C1 19.9995 11
         28.9995 16 30.9995C21 28.9995 31 19.9995 31 11.9995C31 7.02951 26.971 2.99951 22 2.99951C18.477 2.99951
         15.479 5.05051 14 7.99951M27 11.9998C27 9.23781 24.762 6.99981 22 6.99981"
-          stroke={stroke} stroke-width={strokeWidth} stroke-linecap="round" stroke-linejoin="round" />
+          stroke={stroke} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
   );
