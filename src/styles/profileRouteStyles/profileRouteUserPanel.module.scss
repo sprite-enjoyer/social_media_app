@@ -107,8 +107,8 @@
       width: 30px;
       padding: 10px;
       border-radius: 50%;
-      outline: 1px solid abstracts.$accent-color;
       aspect-ratio: 1;
+      background-color: rgba($color: white, $alpha: 1);
 
       &__image {
         width: 100%;

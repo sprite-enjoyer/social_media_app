@@ -45,16 +45,20 @@ const Header = () => {
           <NotificationsSvg
             width={"50px"}
             height={"100%"}
-            fill={"none"}
-            fill2={"none"}
-            stroke={"rgba(254, 91, 56, 0.9)"}
-            stroke2={"black"}
-            strokeWidth={1.5}
-            strokeWidth2={2}
+            fill={"rgba(254, 91, 56, 0.9)"}
+            fill2={"black"}
+            stroke={"black"}
+            strokeWidth={1}
           />
         </button>
         <button className={styles["messages-btn"]} >
-          <MessagesSvg fill={"rgba(254, 92, 56, 0.9)"} stroke={"black"} strokeWidth={2} width={"100%"} height={"40px"} />
+          <MessagesSvg
+            fill={"rgba(254, 92, 56, 0.9)"}
+            stroke={"black"}
+            strokeWidth={2}
+            width={"100%"}
+            height={"40px"}
+          />
         </button>
         <HeaderDropDown />
       </div>
