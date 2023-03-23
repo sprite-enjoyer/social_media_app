@@ -2,7 +2,6 @@
 
 .main {
   position: sticky;
-  left: 0;
   top: abstracts.$header-height;
   height: calc(100vh - abstracts.$header-height);
   width: 70px;

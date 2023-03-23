@@ -4,5 +4,6 @@
   position: sticky;
   width: 70px;
   background-color: abstracts.$sidebar-color;
+  height: calc(100vh - abstracts.$header-height);
 
 }
