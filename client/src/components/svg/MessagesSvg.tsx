@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BaseSvgProps } from "../../misc/types"
 
 const MessagesSvg = ({ width, height, fill, stroke, strokeWidth }: BaseSvgProps) => {
@@ -17,4 +18,4 @@ const MessagesSvg = ({ width, height, fill, stroke, strokeWidth }: BaseSvgProps)
 };
 
 
-export default MessagesSvg;
+export default memo(MessagesSvg);

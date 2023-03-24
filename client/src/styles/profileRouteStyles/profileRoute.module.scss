@@ -10,6 +10,7 @@
   height: auto;
   width: 100%;
   justify-content: space-between;
+  background-color: abstracts.$body-background-color;
 }
 
 .body {
@@ -18,5 +19,4 @@
   justify-content: center;
   align-items: flex-start;
   padding: 20px 0 0 0;
-  background-color: abstracts.$body-background-color;
 }

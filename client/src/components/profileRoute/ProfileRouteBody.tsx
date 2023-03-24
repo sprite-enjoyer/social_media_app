@@ -7,6 +7,7 @@ import ProfileIntro, { ProfileIntroInformation, ProfileIntroNetwork } from "./Pr
 import ProfileRouteUserPanel from "./ProfileRouteUserPanel";
 import profilePicture from "../../assets/images/profile_picture.jpg";
 import FavouritePages from "./FavouritePages";
+import PostList from "./PostList";
 
 const ProfileRouteBody = () => {
   return (
@@ -17,8 +18,7 @@ const ProfileRouteBody = () => {
           <ProfileIntro content={testInformation} networks={testNetworks} />
         </div >
         <div className={styles["bottom__middle"]} >
-          {/* <PostList posts={testPostList} /> */}
-          <Post {...testPostList[0]} />
+          <PostList posts={testPostList} />
         </div>
         <div className={styles["bottom__right"]} >
           <Photos photos={testPhotos} />

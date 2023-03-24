@@ -1,8 +1,5 @@
+import { memo } from "react";
 import { BaseSvgProps } from "../../misc/types";
-
-export interface CommentsSvgProps extends BaseSvgProps {
-
-}
 
 const CommentsSvg = ({ width, height, stroke, strokeWidth, fill }: BaseSvgProps) => {
   return (
@@ -23,4 +20,4 @@ const CommentsSvg = ({ width, height, stroke, strokeWidth, fill }: BaseSvgProps)
   );
 };
 
-export default CommentsSvg;
+export default memo(CommentsSvg);

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BaseSvgProps } from "../../misc/types";
 
 export interface ShareSvgProps extends BaseSvgProps {
@@ -55,4 +56,4 @@ const ShareSvg = ({
   );
 };
 
-export default ShareSvg;
+export default memo(ShareSvg);

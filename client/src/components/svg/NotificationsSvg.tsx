@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BaseSvgProps } from "../../misc/types";
 
 export interface NotificationsSvgProps extends BaseSvgProps {
@@ -48,4 +49,4 @@ const NotificationsSvg = (
   );
 };
 
-export default NotificationsSvg;
+export default memo(NotificationsSvg);

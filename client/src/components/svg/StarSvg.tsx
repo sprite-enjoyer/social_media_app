@@ -1,6 +1,5 @@
+import { memo } from "react";
 import { BaseSvgProps } from "../../misc/types";
-
-
 
 const StarSvg = ({ fill, stroke, strokeWidth, width, height }: BaseSvgProps) => {
   return (
@@ -19,4 +18,4 @@ const StarSvg = ({ fill, stroke, strokeWidth, width, height }: BaseSvgProps) => 
 
 
 
-export default StarSvg;
+export default memo(StarSvg);

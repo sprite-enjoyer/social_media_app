@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BaseSvgProps } from "../../misc/types";
 
 export interface LogoSvgProps extends BaseSvgProps {
@@ -28,4 +29,4 @@ const LogoSvg = ({ width, height, stroke, strokeWidth, strokeWidth2, fill, fill2
   );
 };
 
-export default LogoSvg;
+export default memo(LogoSvg);
