@@ -5,7 +5,7 @@ import showPassword from "../../assets/icons/show_password.svg";
 import hidePassword from "../../assets/icons/hide_password.svg";
 import SignInStore from "../../stores/SignInStore";
 import { observer } from "mobx-react";
-
+import { useState } from "react";
 
 export interface SignInProps {
   store: SignInStore,
@@ -13,8 +13,27 @@ export interface SignInProps {
 
 const SignIn = ({ store }: SignInProps) => {
 
+  const [userInput, setUserInput] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleRegisterButtonClick = () => {
     store.setSignUpShown(true);
+  };
+
+  const handleSignInButtonClick = async () => {
+    const baseURL = "http://localhost:3000/users/checkUser/";
+    await fetch(baseURL.concat(userInput.email), {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userInput)
+    })
+      .catch(e => console.error(e))
+      .then(res => res);
   };
 
   return (
@@ -36,12 +55,20 @@ const SignIn = ({ store }: SignInProps) => {
       <div className={styles["inputs"]} >
         <label className={styles["label"]} >
           Email Address:
-          <input type="email" className={styles["email"]} />
+          <input
+            type="email"
+            className={styles["email"]}
+            onChange={(e) => setUserInput({ ...userInput, email: e.target.value })}
+          />
         </label>
         <label className={styles["label"].concat(" ".concat(styles["pwd-label"]))} >
           Password:
           <div className={styles["password-div"]} >
-            <input type={store.passwordShown ? "text" : "password"} className={styles["pwd"]} />
+            <input
+              type={store.passwordShown ? "text" : "password"}
+              className={styles["pwd"]}
+              onChange={(e) => setUserInput({ ...userInput, password: e.target.value })}
+            />
             <button
               onClick={() => store.setPasswordShown(!store.passwordShown)}
               className={styles["show-button"]}
@@ -66,7 +93,7 @@ const SignIn = ({ store }: SignInProps) => {
           Forgot Password
         </a>
       </div>
-      <button className={styles["btn"]} >
+      <button onClick={handleSignInButtonClick} className={styles["btn"]} >
         Sign In
       </button>
       <div className={styles["register-div"]} >

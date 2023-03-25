@@ -1,7 +1,6 @@
 @use "../abstracts/abstracts.module.scss" as abstracts;
 
 .main {
-
   @include abstracts.myFont(400);
   @include abstracts.routeBaseStyle;
   @include abstracts.centeringStyle();
@@ -12,7 +11,6 @@
 }
 
 .container {
-
   @include abstracts.centeringStyle(column);
   position: absolute;
   width: 600px;
@@ -57,7 +55,15 @@
 .inputs {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
+  gap: 10px;
+}
+
+.label-input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .label {
@@ -68,25 +74,25 @@
   font-size: 18px;
   line-height: 28px;
   color: #2C2738;
+  flex: 1 1;
 }
 
 .input {
   all: unset;
+  @include abstracts.myFont(400, 20px, black, 1);
   background: #FCFDFE;
   border: 2px solid #D8D8D8;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   height: 45px;
   width: 100%;
-  margin: 5px 0px 30px 0px;
   background: #FCFDFE;
   border: 2px solid #D8D8D8;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   cursor: auto;
-  font-size: 20px;
-  font-weight: 400;
   padding-left: 5px;
+  flex: 3 3;
 }
 
 .btn {
@@ -103,4 +109,5 @@
   text-align: center;
   color: #FFFFFF;
   cursor: pointer;
+  margin-top: 30px;
 }
