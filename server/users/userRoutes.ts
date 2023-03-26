@@ -1,10 +1,17 @@
 import express from 'express';
-import { postUserHandler, getUserHandler, putUserHandler, deleteUserHandler, checkUserHandler } from "./user.controller";
+import {
+  postUserHandler,
+  getUserHandler,
+  putUserHandler,
+  deleteUserHandler,
+  checkUserHandler,
+  verifyJWT,
+} from "./user.controller";
 
 export const userRouter = express.Router();
 
-userRouter.get('/get/:userId', getUserHandler);
+userRouter.get('/get/:email', verifyJWT, getUserHandler);
 userRouter.post("/post", postUserHandler);
-userRouter.post("/checkUser/:userID", checkUserHandler);
-userRouter.put("/put/:userID", putUserHandler);
-userRouter.delete("/delete/:userID", deleteUserHandler);
+userRouter.post("/checkUser", checkUserHandler);
+userRouter.put("/put/:email", putUserHandler);
+userRouter.delete("/delete/:email", deleteUserHandler);

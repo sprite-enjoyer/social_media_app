@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "../components/Header";
 import LeftSidebar from "../components/LeftSidebar";
 import ProfileRouteBody from "../components/profileRoute/ProfileRouteBody";
@@ -5,6 +6,10 @@ import RightSidebar from "../components/RightSidebar";
 import styles from "../styles/profileRouteStyles/profileRoute.module.scss";
 
 const ProfileRoute = () => {
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <div className={styles["main"]} >

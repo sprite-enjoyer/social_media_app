@@ -5,10 +5,31 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 
+export const verifyJWT = async (req: Request, res: Response, next: NextFunction) => {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) return res.status(500);
+
+  const token = req.headers.authorization?.toString();
+  if (!token) return res.sendStatus(401);
+
+  jwt.verify(token, secret, (err, decoded) => {
+    if (err) {
+      console.error(err.message);
+      res.json({ auth: false, message: "authentication failed." });
+      return res.sendStatus(403);
+    }
+    else {
+      res.locals.userID = decoded;
+      res.json({ auth: true, message: "authentication successful." });
+      next();
+    }
+  });
+};
+
 export const getUserHandler = async (req: Request, res: Response) => {
-  const { userID } = req.params;
-  console.log(userID);
-  const result = await prismaClient.user.findUnique({ where: { username: "johndoe" } });
+  console.log(res.locals, "locals!");
+  const { email } = req.params;
+  const result = await prismaClient.user.findUnique({ where: { email: email } });
   res.json(result);
 };
 
@@ -36,8 +57,7 @@ export const postUserHandler = async (req: Request, res: Response) => {
   };
 
   const prismaUser = await prismaClient.user.create({ data: user });
-  res.status(200);
-  res.json(prismaUser);
+  res.status(200).json(prismaUser);
 };
 
 export const putUserHandler = async (req: Request, res: Response) => {
@@ -49,44 +69,23 @@ export const deleteUserHandler = async (req: Request, res: Response) => {
 };
 
 export const checkUserHandler = async (req: Request, res: Response) => {
-  console.log(req.body, "body!")
   const jwtSecret = process.env.JWT_SECRET;
-  if (!jwtSecret) return res.status(500).send("secret not defined in the server");
+  if (!jwtSecret) return res.status(500).json({ message: "secret not defined in the server" });
 
   const { email, password } = req.body;
   const user = await prismaClient.user.findUnique({ where: { email: email } });
 
   if (user && (await bcrypt.compare(password, user.password))) {
     const token = jwt.sign({ userId: user.id }, jwtSecret);
-    console.log(token, "token!")
+    const date = new Date();
+    date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+
     res.cookie('jwt', token, {
       maxAge: 24 * 60 * 60 * 1000,
-      sameSite: 'none',
-    });
-    return res.statusCode = 200;
+      httpOnly: true,
+      secure: true,
+      expires: date
+    }).status(200).json({ message: "success" }).end();
   }
-  else return res.statusCode = 401;
-
+  else return res.status(401).json({ message: "invalid user credentials" }).end();
 };
-
-export const checkUserTokenHandler = async (req: Request, res: Response, next: NextFunction) => {
-  const secret = process.env.JWT_SECRET;
-  if (!secret) return res.status(500);
-
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-  if (!token) return res.sendStatus(401);
-
-  jwt.verify(token, secret, (err, user) => {
-    if (err) {
-      console.log(err.message);
-      return res.sendStatus(403);
-    }
-    else {
-      res.locals.userID = jwt.decode(token);
-      next();
-    }
-  });
-
-};
-

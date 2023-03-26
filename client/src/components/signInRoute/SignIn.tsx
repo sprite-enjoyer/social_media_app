@@ -23,17 +23,18 @@ const SignIn = ({ store }: SignInProps) => {
   };
 
   const handleSignInButtonClick = async () => {
-    const baseURL = "http://localhost:3000/users/checkUser/";
-    await fetch(baseURL.concat(userInput.email), {
+    const baseURL = "http://localhost:3000/users/checkUser";
+    const response = await fetch(baseURL, {
       method: "POST",
       mode: "cors",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(userInput)
     })
-      .catch(e => console.error(e))
-      .then(res => res);
+      .then(async res => await res.json())
+      .catch(e => console.error(e));
   };
 
   return (
