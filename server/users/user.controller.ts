@@ -9,28 +9,36 @@ export const verifyJWT = async (req: Request, res: Response, next: NextFunction)
   const secret = process.env.JWT_SECRET;
   if (!secret) return res.status(500);
 
-  const token = req.headers.authorization?.toString();
+  const token = req.headers.jwt?.toString();
   if (!token) return res.sendStatus(401);
 
   jwt.verify(token, secret, (err, decoded) => {
     if (err) {
-      console.error(err.message);
-      res.json({ auth: false, message: "authentication failed." });
-      return res.sendStatus(403);
+      console.error(err.message, " - jwt verification error");
+      res.json({ auth: false, message: "not authenticated." });
+      res.locals.userID = "guest";
+      return;
     }
     else {
-      res.locals.userID = decoded;
-      res.json({ auth: true, message: "authentication successful." });
+      res.locals.userInfo = decoded;
       next();
     }
   });
 };
 
+export const getPrivateUserHandler = async (req: Request, res: Response) => {
+  const { userId } = res.locals.userInfo;
+  if (!userId) return res.json({ message: "user not found in res.locals", data: null });
+  const user = await prismaClient.user.findUniqueOrThrow({ where: { id: userId } });
+  res.json({ auth: true, data: user });
+}
+
 export const getUserHandler = async (req: Request, res: Response) => {
-  console.log(res.locals, "locals!");
   const { email } = req.params;
   const result = await prismaClient.user.findUnique({ where: { email: email } });
-  res.json(result);
+  if (!result) return res.json({ message: "no user", data: null });
+  const { password, ...publicUser } = result;
+  res.json(publicUser);
 };
 
 export const postUserHandler = async (req: Request, res: Response) => {
@@ -73,7 +81,7 @@ export const checkUserHandler = async (req: Request, res: Response) => {
   if (!jwtSecret) return res.status(500).json({ message: "secret not defined in the server" });
 
   const { email, password } = req.body;
-  const user = await prismaClient.user.findUnique({ where: { email: email } });
+  const user = await prismaClient.user.findUniqueOrThrow({ where: { email: email } });
 
   if (user && (await bcrypt.compare(password, user.password))) {
     const token = jwt.sign({ userId: user.id }, jwtSecret);
@@ -85,7 +93,7 @@ export const checkUserHandler = async (req: Request, res: Response) => {
       httpOnly: true,
       secure: true,
       expires: date
-    }).status(200).json({ message: "success" }).end();
+    }).status(200).json({ message: "success" });
   }
-  else return res.status(401).json({ message: "invalid user credentials" }).end();
+  else return res.status(401).json({ message: "invalid user credentials" });
 };
