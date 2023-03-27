@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import prismaClient from "../config/prisma";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload, VerifyCallback } from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -9,14 +9,14 @@ export const verifyJWT = async (req: Request, res: Response, next: NextFunction)
   const secret = process.env.JWT_SECRET;
   if (!secret) return res.status(500);
 
-  const token = req.headers.jwt?.toString();
+  const token = req.cookies.jwt?.toString();
   if (!token) {
     res.locals.userInfo = { id: null, guest: true };
     next();
     return;
   }
 
-  jwt.verify(token, secret, (err, decoded) => {
+  const callback: VerifyCallback<JwtPayload | string> = (err, decoded) => {
     if (err) {
       console.error(err.message, " - jwt verification error");
       res.json({ auth: false, message: "not authenticated." });
@@ -27,7 +27,8 @@ export const verifyJWT = async (req: Request, res: Response, next: NextFunction)
       res.locals.userInfo = { decoded, guest: false };
       next();
     }
-  });
+  }
+  jwt.verify(token, secret, callback);
 };
 
 export const getUserHandler = async (req: Request, res: Response) => {
@@ -38,7 +39,14 @@ export const getUserHandler = async (req: Request, res: Response) => {
   if (!result) return res.json({ message: "no user", data: null });
 
   const { password, ...publicUser } = result;
-  res.json({ ...publicUser, admin: jwtUserId === publicUser.id });
+  Object.defineProperty(publicUser, "admin", {
+    value: jwtUserId === publicUser.id,
+    writable: false,
+    enumerable: true,
+    configurable: false
+  });
+  console.log(publicUser, "publicUser!!");
+  res.json(publicUser);
 };
 
 export const postUserHandler = async (req: Request, res: Response) => {
@@ -95,5 +103,5 @@ export const checkUserHandler = async (req: Request, res: Response) => {
       expires: date
     }).status(200).json({ message: "success", userName: user.username });
   }
-  else return res.status(401).json({ message: "invalid user credentials" });
+  else return res.status(401).json({ message: "invalid user credentials", userName: null });
 };

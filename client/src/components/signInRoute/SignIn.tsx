@@ -3,38 +3,17 @@ import googleImg from "../../assets/oauth_icons/google.svg";
 import facebookImg from "../../assets/oauth_icons/facebook.svg";
 import showPassword from "../../assets/icons/show_password.svg";
 import hidePassword from "../../assets/icons/hide_password.svg";
-import SignInStore from "../../stores/SignInStore";
+import SignInRouteStore from "../../stores/SignInRouteStore";
 import { observer } from "mobx-react";
-
+import { useNavigate } from "react-router-dom";
 export interface SignInProps {
-  store: SignInStore,
+  store: SignInRouteStore,
 }
 
 const SignIn = ({ store }: SignInProps) => {
-
-  const handleRegisterButtonClick = () => {
-    store.setSignUpShown(true);
-  };
-
-  const handleSignInButtonClick = async () => {
-    const baseURL = `${import.meta.env.VITE_SERVER_BASE_URL}/users/checkUser`;
-
-    const requestBody = {
-      email: store.signInEmail,
-      password: store.signInPassword
-    }
-    const response = await fetch(baseURL, {
-      method: "POST",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(requestBody)
-    })
-      .then(async res => await res.json())
-      .catch(e => console.error(e));
-  };
+  const navigate = useNavigate();
+  const handleRegisterButtonClick = () => store.setSignUpShown(true);
+  const handleSignInButtonClick = async () => store.getApiResponse(navigate);
 
   return (
     <div className={styles["main"]} >

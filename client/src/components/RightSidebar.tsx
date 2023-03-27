@@ -1,7 +1,8 @@
+import { ProfileRouteBaseComponentProps } from "../routes/ProfileRoute";
 import styles from "../styles/componentStyles/rightSidebar.module.scss";
 
 
-const RightSidebar = () => {
+const RightSidebar = ({ store }: ProfileRouteBaseComponentProps) => {
 
   return (
     <div className={styles["main"]} >

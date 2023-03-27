@@ -1,7 +1,8 @@
 import { makeObservable, observable } from "mobx";
 import { action } from "mobx";
+import { NavigateFunction } from "react-router-dom";
 
-class SignInStore {
+class SignInRouteStore {
 
   signUpShown = false;
 
@@ -21,6 +22,8 @@ class SignInStore {
 
   signInPassword = "";
 
+  apiResponse: { message: string, userName: string | null } | null = null;
+
   constructor() {
 
     makeObservable(this, {
@@ -33,6 +36,7 @@ class SignInStore {
       password: observable,
       signInEmail: observable,
       signInPassword: observable,
+      apiResponse: observable,
       setPasswordShown: action,
       setSignUpShown: action,
       setEmail: action,
@@ -42,8 +46,38 @@ class SignInStore {
       setSignInEmail: action,
       setUserName: action,
       setSignInPassword: action,
+      setApiResponse: action,
     });
+  }
 
+  private getRequestBody() {
+    return {
+      email: this.signInEmail,
+      password: this.signInPassword
+    };
+  }
+
+  async getApiResponse(navigate: NavigateFunction) {
+    const baseURL = import.meta.env.VITE_SERVER_BASE_URL;
+    await fetch(`${baseURL}/users/checkUser`, {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.getRequestBody())
+    })
+      .then(async res => {
+        const data: { message: string, userName: string | null } = await res.json();
+        if (data.userName) navigate(`/${data.userName}`);
+        else alert("invalid user credentials!");
+      })
+      .catch(e => console.error(e));
+  }
+
+  setApiResponse(newValue: any) {
+    this.apiResponse = newValue;
   }
 
   setSignUpShown(newValue: boolean) {
@@ -85,4 +119,4 @@ class SignInStore {
 };
 
 
-export default SignInStore;
+export default SignInRouteStore;

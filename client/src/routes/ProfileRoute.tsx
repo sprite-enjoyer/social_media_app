@@ -4,32 +4,32 @@ import Header from "../components/Header";
 import LeftSidebar from "../components/LeftSidebar";
 import ProfileRouteBody from "../components/profileRoute/ProfileRouteBody";
 import RightSidebar from "../components/RightSidebar";
+import ProfileRouteStore from "../stores/ProfileRouteStore";
 import styles from "../styles/profileRouteStyles/profileRoute.module.scss";
+
+const store = new ProfileRouteStore();
+
+export interface ProfileRouteBaseComponentProps {
+  store: ProfileRouteStore;
+}
 
 const ProfileRoute = () => {
   const { userName } = useParams();
+  if (!userName) return null;
+
   useEffect(() => {
-    const response = fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/users/${userName}`, {
-      method: "GET",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(async res => console.log(res.json()))
-      .catch(e => console.error(e));
+    store.getApiResponse(userName);
   }, []);
 
   return (
     <div className={styles["main"]} >
-      <Header />
+      <Header store={store} />
       <div className={styles["bottom"]} >
-        <LeftSidebar />
+        <LeftSidebar store={store} />
         <div className={styles["body"]} >
-          <ProfileRouteBody />
+          <ProfileRouteBody store={store} />
         </div>
-        <RightSidebar />
+        <RightSidebar store={store} />
       </div>
     </div>
   );

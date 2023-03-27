@@ -4,8 +4,13 @@ import searchSvg from "../assets/icons/search.svg";
 import MessagesSvg from "./svg/MessagesSvg";
 import NotificationsSvg from "./svg/NotificationsSvg";
 import LogoSvg from "./svg/LogoSvg";
+import ProfileRouteStore from "../stores/ProfileRouteStore";
+import { ProfileRouteBaseComponentProps } from "../routes/ProfileRoute";
 
-const Header = () => {
+export interface HeaderProps extends ProfileRouteBaseComponentProps {
+}
+
+const Header = ({ store }: HeaderProps) => {
 
   return (
     <div className={styles["main"]} >
