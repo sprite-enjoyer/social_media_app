@@ -1,33 +1,32 @@
 import styles from "../../styles/signInRouteStyles/signUpModal.module.scss";
 import { observer } from "mobx-react";
 import SignInStore from "../../stores/SignInStore";
-import { useState } from "react";
 export interface SignUpModalProps {
   store: SignInStore
 }
 
 const SignUpModal = ({ store }: SignUpModalProps) => {
-  const [userInput, setUserInput] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
-    email: "",
-    password: "",
-  });
-
   if (!store.signUpShown) return null;
 
   const handleMainDivClick = () => store.setSignUpShown(false);
 
   const handleButtonClick = async () => {
 
-    const result = await fetch("http://localhost:3000/users/post", {
+    const requestBody = {
+      firstName: store.firstName,
+      lastName: store.lastName,
+      userName: store.userName,
+      email: store.email,
+      password: store.password,
+    };
+
+    const result = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/users/post`, {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(userInput),
+      body: JSON.stringify(requestBody),
     }).then(async res => await res.json());
   }
 
@@ -47,8 +46,7 @@ const SignUpModal = ({ store }: SignUpModalProps) => {
           <div className={styles["label-input-group"]} >
             <label className={styles["label"]}>First Name</label>
             <input
-              onChange={(e) => setUserInput({ ...userInput, firstName: e.target.value })}
-              value={userInput.firstName}
+              onChange={(e) => store.setFirstName(e.target.value)}
               type="text"
               className={styles["input"]}
             />
@@ -56,8 +54,7 @@ const SignUpModal = ({ store }: SignUpModalProps) => {
           <div className={styles["label-input-group"]} >
             <label className={styles["label"]}>Last Name</label>
             <input
-              onChange={(e) => setUserInput({ ...userInput, lastName: e.target.value })}
-              value={userInput.lastName}
+              onChange={(e) => store.setLastName(e.target.value)}
               type="text"
               className={styles["input"]}
             />
@@ -65,8 +62,7 @@ const SignUpModal = ({ store }: SignUpModalProps) => {
           <div className={styles["label-input-group"]} >
             <label className={styles["label"]}>UserName</label>
             <input
-              onChange={(e) => setUserInput({ ...userInput, userName: e.target.value })}
-              value={userInput.userName}
+              onChange={(e) => store.setUserName(e.target.value)}
               type="text"
               className={styles["input"]}
             />
@@ -74,8 +70,7 @@ const SignUpModal = ({ store }: SignUpModalProps) => {
           <div className={styles["label-input-group"]} >
             <label className={styles["label"]}>Email</label>
             <input
-              onChange={(e) => setUserInput({ ...userInput, email: e.target.value })}
-              value={userInput.email}
+              onChange={(e) => store.setEmail(e.target.value)}
               type="email"
               className={styles["input"]}
             />
@@ -83,8 +78,7 @@ const SignUpModal = ({ store }: SignUpModalProps) => {
           <div className={styles["label-input-group"]} >
             <label className={styles["label"]}>Password</label>
             <input
-              onChange={(e) => setUserInput({ ...userInput, password: e.target.value })}
-              value={userInput.password}
+              onChange={(e) => store.setPassword(e.target.value)}
               type="password"
               className={styles["input"]}
             />

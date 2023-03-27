@@ -8,16 +8,14 @@ const router = createBrowserRouter([
     element: <SignInRoute />
   },
   {
-    path: "/profile/:userID",
+    path: "/:userName",
     element: <ProfileRoute />
   }
 ]);
 
 function App() {
 
-  return (
-    <RouterProvider router={router} />
-  );
+  return (<RouterProvider router={router} />);
 };
 
 export default App;

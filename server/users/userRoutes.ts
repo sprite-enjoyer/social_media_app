@@ -6,13 +6,11 @@ import {
   deleteUserHandler,
   checkUserHandler,
   verifyJWT,
-  getPrivateUserHandler,
 } from "./user.controller";
 
 export const userRouter = express.Router();
 
-userRouter.get('/get/:email', getUserHandler);
-userRouter.get("/me", verifyJWT, getPrivateUserHandler);
+userRouter.get('/:userName', verifyJWT, getUserHandler);
 userRouter.post("/post", postUserHandler);
 userRouter.post("/checkUser", checkUserHandler);
 userRouter.put("/put/:email", putUserHandler);

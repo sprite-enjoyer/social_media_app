@@ -10,35 +10,35 @@ export const verifyJWT = async (req: Request, res: Response, next: NextFunction)
   if (!secret) return res.status(500);
 
   const token = req.headers.jwt?.toString();
-  if (!token) return res.sendStatus(401);
+  if (!token) {
+    res.locals.userInfo = { id: null, guest: true };
+    next();
+    return;
+  }
 
   jwt.verify(token, secret, (err, decoded) => {
     if (err) {
       console.error(err.message, " - jwt verification error");
       res.json({ auth: false, message: "not authenticated." });
-      res.locals.userID = "guest";
-      return;
+      res.locals.userInfo = { id: null, guest: true };
+      next();
     }
     else {
-      res.locals.userInfo = decoded;
+      res.locals.userInfo = { decoded, guest: false };
       next();
     }
   });
 };
 
-export const getPrivateUserHandler = async (req: Request, res: Response) => {
-  const { userId } = res.locals.userInfo;
-  if (!userId) return res.json({ message: "user not found in res.locals", data: null });
-  const user = await prismaClient.user.findUniqueOrThrow({ where: { id: userId } });
-  res.json({ auth: true, data: user });
-}
-
 export const getUserHandler = async (req: Request, res: Response) => {
-  const { email } = req.params;
-  const result = await prismaClient.user.findUnique({ where: { email: email } });
+  const jwtUserId = res.locals.userInfo.decoded?.userId ?? null;
+  const { userName } = req.params;
+
+  const result = await prismaClient.user.findUnique({ where: { username: userName } });
   if (!result) return res.json({ message: "no user", data: null });
+
   const { password, ...publicUser } = result;
-  res.json(publicUser);
+  res.json({ ...publicUser, admin: jwtUserId === publicUser.id });
 };
 
 export const postUserHandler = async (req: Request, res: Response) => {
@@ -81,7 +81,7 @@ export const checkUserHandler = async (req: Request, res: Response) => {
   if (!jwtSecret) return res.status(500).json({ message: "secret not defined in the server" });
 
   const { email, password } = req.body;
-  const user = await prismaClient.user.findUniqueOrThrow({ where: { email: email } });
+  const user = await prismaClient.user.findUnique({ where: { email: email } });
 
   if (user && (await bcrypt.compare(password, user.password))) {
     const token = jwt.sign({ userId: user.id }, jwtSecret);
@@ -93,7 +93,7 @@ export const checkUserHandler = async (req: Request, res: Response) => {
       httpOnly: true,
       secure: true,
       expires: date
-    }).status(200).json({ message: "success" });
+    }).status(200).json({ message: "success", userName: user.username });
   }
   else return res.status(401).json({ message: "invalid user credentials" });
 };

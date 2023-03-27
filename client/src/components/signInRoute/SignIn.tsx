@@ -5,7 +5,6 @@ import showPassword from "../../assets/icons/show_password.svg";
 import hidePassword from "../../assets/icons/hide_password.svg";
 import SignInStore from "../../stores/SignInStore";
 import { observer } from "mobx-react";
-import { useState } from "react";
 
 export interface SignInProps {
   store: SignInStore,
@@ -13,17 +12,17 @@ export interface SignInProps {
 
 const SignIn = ({ store }: SignInProps) => {
 
-  const [userInput, setUserInput] = useState({
-    email: "",
-    password: "",
-  });
-
   const handleRegisterButtonClick = () => {
     store.setSignUpShown(true);
   };
 
   const handleSignInButtonClick = async () => {
-    const baseURL = "http://localhost:3000/users/checkUser";
+    const baseURL = `${import.meta.env.VITE_SERVER_BASE_URL}/users/checkUser`;
+
+    const requestBody = {
+      email: store.signInEmail,
+      password: store.signInPassword
+    }
     const response = await fetch(baseURL, {
       method: "POST",
       mode: "cors",
@@ -31,7 +30,7 @@ const SignIn = ({ store }: SignInProps) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(userInput)
+      body: JSON.stringify(requestBody)
     })
       .then(async res => await res.json())
       .catch(e => console.error(e));
@@ -59,7 +58,7 @@ const SignIn = ({ store }: SignInProps) => {
           <input
             type="email"
             className={styles["email"]}
-            onChange={(e) => setUserInput({ ...userInput, email: e.target.value })}
+            onChange={(e) => store.setSignInEmail(e.target.value)}
           />
         </label>
         <label className={styles["label"].concat(" ".concat(styles["pwd-label"]))} >
@@ -68,7 +67,7 @@ const SignIn = ({ store }: SignInProps) => {
             <input
               type={store.passwordShown ? "text" : "password"}
               className={styles["pwd"]}
-              onChange={(e) => setUserInput({ ...userInput, password: e.target.value })}
+              onChange={(e) => store.setSignInPassword(e.target.value)}
             />
             <button
               onClick={() => store.setPasswordShown(!store.passwordShown)}
