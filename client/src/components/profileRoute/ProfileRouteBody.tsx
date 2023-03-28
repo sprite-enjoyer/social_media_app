@@ -8,9 +8,13 @@ import ProfileRouteUserPanel from "./ProfileRouteUserPanel";
 import profilePicture from "../../assets/images/profile_picture.jpg";
 import FavouritePages from "./FavouritePages";
 import PostList from "./PostList";
-import { ProfileRouteBaseComponentProps } from "../../routes/ProfileRoute";
+import ProfileRouteStore from "../../stores/ProfileRouteStore";
 
-const ProfileRouteBody = ({ store }: ProfileRouteBaseComponentProps) => {
+export interface ProfileRouteBodyProps {
+  store: ProfileRouteStore,
+}
+
+const ProfileRouteBody = ({ store }: ProfileRouteBodyProps) => {
   return (
     <div className={styles["main"]} >
       <ProfileRouteUserPanel />

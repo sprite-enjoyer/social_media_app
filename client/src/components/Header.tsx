@@ -4,10 +4,10 @@ import searchSvg from "../assets/icons/search.svg";
 import MessagesSvg from "./svg/MessagesSvg";
 import NotificationsSvg from "./svg/NotificationsSvg";
 import LogoSvg from "./svg/LogoSvg";
-import ProfileRouteStore from "../stores/ProfileRouteStore";
-import { ProfileRouteBaseComponentProps } from "../routes/ProfileRoute";
+import HeaderStore from "../stores/HeaderStore";
 
-export interface HeaderProps extends ProfileRouteBaseComponentProps {
+export interface HeaderProps {
+  store: HeaderStore
 }
 
 const Header = ({ store }: HeaderProps) => {

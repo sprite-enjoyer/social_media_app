@@ -1,10 +1,9 @@
-import { ProfileRouteBaseComponentProps } from "../routes/ProfileRoute";
 import styles from "../styles/componentStyles/leftSidebar.module.scss";
 import FriendsSvg from "./svg/FriendsSvg";
 import HomeSvg from "./svg/HomeSvg";
 import StarSvg from "./svg/StarSvg";
 
-const LeftSidebar = ({ store }: ProfileRouteBaseComponentProps) => {
+const LeftSidebar = () => {
 
   return (
     <div className={styles["main"]} >

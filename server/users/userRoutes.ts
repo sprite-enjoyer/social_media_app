@@ -4,7 +4,7 @@ import {
   getUserHandler,
   putUserHandler,
   deleteUserHandler,
-  checkUserHandler,
+  checkUserDataAndSendJWT,
   verifyJWT,
 } from "./user.controller";
 
@@ -12,6 +12,6 @@ export const userRouter = express.Router();
 
 userRouter.get('/:userName', verifyJWT, getUserHandler);
 userRouter.post("/post", postUserHandler);
-userRouter.post("/checkUser", checkUserHandler);
+userRouter.post("/checkUser", checkUserDataAndSendJWT);
 userRouter.put("/put/:email", putUserHandler);
 userRouter.delete("/delete/:email", deleteUserHandler);

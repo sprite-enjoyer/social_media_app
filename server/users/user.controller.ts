@@ -84,7 +84,7 @@ export const deleteUserHandler = async (req: Request, res: Response) => {
   console.log("user delete request!")
 };
 
-export const checkUserHandler = async (req: Request, res: Response) => {
+export const checkUserDataAndSendJWT = async (req: Request, res: Response) => {
   const jwtSecret = process.env.JWT_SECRET;
   if (!jwtSecret) return res.status(500).json({ message: "secret not defined in the server" });
 

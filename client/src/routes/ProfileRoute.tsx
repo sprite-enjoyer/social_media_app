@@ -1,39 +1,44 @@
+import { observer } from "mobx-react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import LeftSidebar from "../components/LeftSidebar";
 import ProfileRouteBody from "../components/profileRoute/ProfileRouteBody";
 import RightSidebar from "../components/RightSidebar";
+import AuthStore from "../stores/AuthStore";
+import HeaderStore from "../stores/HeaderStore";
 import ProfileRouteStore from "../stores/ProfileRouteStore";
+import RightSidebarStore from "../stores/RightSidebarStore";
 import styles from "../styles/profileRouteStyles/profileRoute.module.scss";
 
 const store = new ProfileRouteStore();
-
-export interface ProfileRouteBaseComponentProps {
-  store: ProfileRouteStore;
-}
+const headerStore = new HeaderStore();
+const rightSidebarStore = new RightSidebarStore();
 
 const ProfileRoute = () => {
   const { userName } = useParams();
   if (!userName) return null;
 
   useEffect(() => {
-    store.getApiResponse(userName);
+    AuthStore.getUserFromApi(userName);
   }, []);
 
+  useEffect(() => {
+
+  }, [AuthStore.user]);
   return (
     <div className={styles["main"]} >
-      <Header store={store} />
+      <Header store={headerStore} />
       <div className={styles["bottom"]} >
-        <LeftSidebar store={store} />
+        <LeftSidebar />
         <div className={styles["body"]} >
           <ProfileRouteBody store={store} />
         </div>
-        <RightSidebar store={store} />
+        <RightSidebar store={rightSidebarStore} />
       </div>
     </div>
   );
 };
 
-export default ProfileRoute;
+export default observer(ProfileRoute);
 
