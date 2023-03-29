@@ -21,5 +21,4 @@ export interface PublicUser {
   updatedAt: Date;
   followedByIDs: string[];
   followingIDs: string[];
-  readonly admin: boolean;
 }

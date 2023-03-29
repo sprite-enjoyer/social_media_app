@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import LeftSidebar from "../components/LeftSidebar";
 import ProfileRouteBody from "../components/profileRoute/ProfileRouteBody";
@@ -16,11 +16,13 @@ const headerStore = new HeaderStore();
 const rightSidebarStore = new RightSidebarStore();
 
 const ProfileRoute = () => {
+  const navigate = useNavigate();
   const { userName } = useParams();
   if (!userName) return null;
 
   useEffect(() => {
-    AuthStore.getUserFromApi(userName);
+    AuthStore.checkIfLoggedIn(navigate);
+    console.log(AuthStore.user);
   }, []);
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 import { makeObservable, observable } from "mobx";
 import { action } from "mobx";
-import { NavigateFunction } from "react-router-dom";
 
 class SignInRouteStore {
 
@@ -46,38 +45,8 @@ class SignInRouteStore {
       setSignInEmail: action,
       setUserName: action,
       setSignInPassword: action,
-      setApiResponse: action,
+
     });
-  }
-
-  private getRequestBody() {
-    return {
-      email: this.signInEmail,
-      password: this.signInPassword
-    };
-  }
-
-  async getApiResponse(navigate: NavigateFunction) {
-    const baseURL = import.meta.env.VITE_SERVER_BASE_URL;
-    await fetch(`${baseURL}/users/checkUser`, {
-      method: "POST",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(this.getRequestBody())
-    })
-      .then(async res => {
-        const data: { message: string, userName: string | null } = await res.json();
-        if (data.userName) navigate(`/${data.userName}`);
-        else alert("invalid user credentials!");
-      })
-      .catch(e => console.error(e));
-  }
-
-  setApiResponse(newValue: any) {
-    this.apiResponse = newValue;
   }
 
   setSignUpShown(newValue: boolean) {

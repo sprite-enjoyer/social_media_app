@@ -6,6 +6,7 @@ import hidePassword from "../../assets/icons/hide_password.svg";
 import SignInRouteStore from "../../stores/SignInRouteStore";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
+import AuthStore from "../../stores/AuthStore";
 export interface SignInProps {
   store: SignInRouteStore,
 }
@@ -13,7 +14,9 @@ export interface SignInProps {
 const SignIn = ({ store }: SignInProps) => {
   const navigate = useNavigate();
   const handleRegisterButtonClick = () => store.setSignUpShown(true);
-  const handleSignInButtonClick = async () => store.getApiResponse(navigate);
+  const handleSignInButtonClick = async () => {
+    AuthStore.getApiResponse(navigate, { email: store.signInEmail, password: store.signInPassword });
+  };
 
   return (
     <div className={styles["main"]} >

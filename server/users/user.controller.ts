@@ -7,7 +7,7 @@ dotenv.config();
 
 export const verifyJWT = async (req: Request, res: Response, next: NextFunction) => {
   const secret = process.env.JWT_SECRET;
-  if (!secret) return res.status(500);
+  if (!secret) return res.status(500).json({ message: "no jwt secret defined in server" });
 
   const token = req.cookies.jwt?.toString();
   if (!token) {
@@ -31,21 +31,22 @@ export const verifyJWT = async (req: Request, res: Response, next: NextFunction)
   jwt.verify(token, secret, callback);
 };
 
-export const getUserHandler = async (req: Request, res: Response) => {
-  const jwtUserId = res.locals.userInfo.decoded?.userId ?? null;
-  const { userName } = req.params;
+export const getCurrentUser = async (req: Request, res: Response) => {
+  const jwtUserId: string = res.locals.userInfo.decoded?.userId ?? null;
+  if (!jwtUserId) { res.json({ message: "no jwt user id found", user: null }); return; }
 
+  let user = await prismaClient.user.findUnique({ where: { id: jwtUserId } });
+  if (!user) { res.json({ message: "no user found", user: null }).status(404); return; }
+
+  const { password, ...publicUser } = user;
+  res.json({ message: "success!", user: publicUser });
+}
+
+export const getUserHandler = async (req: Request, res: Response) => {
+  const { userName } = req.params;
   const result = await prismaClient.user.findUnique({ where: { username: userName } });
   if (!result) return res.json({ message: "no user", data: null });
-
   const { password, ...publicUser } = result;
-  Object.defineProperty(publicUser, "admin", {
-    value: jwtUserId === publicUser.id,
-    writable: false,
-    enumerable: true,
-    configurable: false
-  });
-  console.log(publicUser, "publicUser!!");
   res.json(publicUser);
 };
 
@@ -86,22 +87,25 @@ export const deleteUserHandler = async (req: Request, res: Response) => {
 
 export const checkUserDataAndSendJWT = async (req: Request, res: Response) => {
   const jwtSecret = process.env.JWT_SECRET;
-  if (!jwtSecret) return res.status(500).json({ message: "secret not defined in the server" });
+  if (!jwtSecret) return res.status(500).json({ message: "secret not defined in the server", user: null });
 
   const { email, password } = req.body;
-  const user = await prismaClient.user.findUnique({ where: { email: email } });
+  let user = await prismaClient.user.findUnique({ where: { email: email } });
 
   if (user && (await bcrypt.compare(password, user.password))) {
     const token = jwt.sign({ userId: user.id }, jwtSecret);
     const date = new Date();
     date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+    const { password, ...publicUser } = user;
 
-    res.cookie('jwt', token, {
-      maxAge: 24 * 60 * 60 * 1000,
-      httpOnly: true,
-      secure: true,
-      expires: date
-    }).status(200).json({ message: "success", userName: user.username });
+    res.cookie('jwt', token,
+      {
+        maxAge: 24 * 60 * 60 * 1000,
+        httpOnly: true,
+        secure: true,
+        expires: date
+      }
+    ).status(200).json({ message: "success", user: publicUser });
   }
-  else return res.status(401).json({ message: "invalid user credentials", userName: null });
+  else return res.status(401).json({ message: "invalid user credentials", user: null });
 };
