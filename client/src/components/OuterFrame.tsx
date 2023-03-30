@@ -1,26 +1,23 @@
-import { ReactNode } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import HeaderStore from "../classes/HeaderStore";
-import RightSidebarStore from "../classes/RightSidebarStore";
+import LeftSidebarStore from "../classes/LeftSidebarStore";
 import styles from "../styles/componentStyles/outerFrame.module.scss";
 import Header from "./Header";
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar";
 
-export interface OuterFrameProps {
-
-}
-
-const OuterFrame = ({ }: OuterFrameProps) => {
+const OuterFrame = () => {
+  const navigate = useNavigate();
   const headerStore = new HeaderStore();
-  const rightSidebarStore = new RightSidebarStore();
+  const leftSidebarStore = new LeftSidebarStore(navigate);
+
   return (
     <div className={styles["main"]} >
       <Header store={headerStore} />
       <div className={styles["bottom"]} >
-        <LeftSidebar />
+        <LeftSidebar leftSidebarStore={leftSidebarStore} />
         <Outlet />
-        <RightSidebar store={rightSidebarStore} />
+        <RightSidebar />
       </div>
     </div>
   );

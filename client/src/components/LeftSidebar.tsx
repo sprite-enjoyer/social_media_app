@@ -1,4 +1,7 @@
-import LeftSidebarStore from "../classes/RightSidebarStore";
+import { observer } from "mobx-react";
+import { useMemo } from "react";
+import LeftSidebarStore from "../classes/LeftSidebarStore";
+import { ActivableSvgObjectWithProps } from "../misc/types";
 import styles from "../styles/componentStyles/leftSidebar.module.scss";
 import FriendsSvg from "./svg/FriendsSvg";
 import HomeSvg from "./svg/HomeSvg";
@@ -11,16 +14,23 @@ export interface LeftSidebarProps {
 
 const LeftSidebar = ({ leftSidebarStore }: LeftSidebarProps) => {
 
+  const svgComponentsList: ActivableSvgObjectWithProps[] = [HomeSvg, ProfileSvg, StarSvg, FriendsSvg];
+
+  const renderedSvgComponents = useMemo(() => {
+    return svgComponentsList.map((Svg, i) =>
+      <button onClick={() => leftSidebarStore.handleIconClick(i)} key={i} className={styles["btn"]}>
+        <Svg.Component {...(leftSidebarStore.activeIconNumber === i ? Svg.activeProps : Svg.notActiveProps)} />
+      </button>
+    );
+  }, [leftSidebarStore.activeIconNumber]);
+
   return (
     <div className={styles["main"]} >
-      <HomeSvg.Component {...HomeSvg.notActiveProps} />
-      <ProfileSvg.Component {...ProfileSvg.notActiveProps} />
-      <StarSvg.Component {...StarSvg.notActiveProps} />
-      <FriendsSvg.Component {...FriendsSvg.notActiveProps} />
+      {renderedSvgComponents}
     </div>
   );
 
 };
 
 
-export default LeftSidebar;
+export default observer(LeftSidebar);

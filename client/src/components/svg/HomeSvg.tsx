@@ -1,10 +1,7 @@
 import { BaseSvgProps } from "../../misc/types";
 
-export interface HomeSvgProps extends Partial<BaseSvgProps> {
-  fill2: string
-}
 
-const HomeSvg = ({ width, height, fill, fill2 }: HomeSvgProps) => {
+const HomeSvg = ({ width, height, fill }: BaseSvgProps) => {
   return (
     <svg
       viewBox="0 0 64 64"
@@ -18,7 +15,7 @@ const HomeSvg = ({ width, height, fill, fill2 }: HomeSvgProps) => {
         d="M31.52 42.781C30.4414 42.7836 29.4077 43.2133 28.645 43.976C27.8823 44.7387 27.4527 
       45.7724 27.45 46.851V54.781H35.6V46.851C35.5968 45.7708 35.1656 44.7359 
       34.4009 43.9731C33.6361 43.2102 32.6002 42.7815 31.52 42.781Z"
-        fill={fill2}
+        fill="black"
       />
       <path
         d="M56.72 25.981L50.21 21.101L47.12 18.7809L35.43 10.0009C34.3004 
@@ -36,25 +33,27 @@ const HomeSvg = ({ width, height, fill, fill2 }: HomeSvgProps) => {
       29.0253 57.12 28.7769C57.2786 28.5676 57.3942 28.3289 57.46 28.0746C57.5258 27.8203 57.5405 27.5555
       57.5033 27.2955C57.4661 27.0355 57.3777 26.7854 57.2433 26.5598C57.1088 26.3341 56.931 26.1374 56.72 25.981Z"
         fill={fill}
-        stroke={fill2}
+        stroke="black"
         strokeWidth={4}
       />
     </svg>
   );
 };
 
-const activeProps: HomeSvgProps = {
-  fill2: "black",
+const activeProps: BaseSvgProps = {
   fill: "rgb(254, 91, 56)",
   width: "40px",
   height: "40px",
+  stroke: "",
+  strokeWidth: 0
 };
 
-const notActiveProps: HomeSvgProps = {
-  fill2: "black",
-  fill: "rgb(254, 91, 56)",
+const notActiveProps: BaseSvgProps = {
+  fill: "white",
   width: "40px",
   height: "40px",
+  stroke: "",
+  strokeWidth: 0
 };
 
 export default { Component: HomeSvg, activeProps, notActiveProps };

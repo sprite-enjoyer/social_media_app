@@ -35,7 +35,7 @@ const activeProps: BaseSvgProps = {
   height: "40px",
 };
 const notActiveProps: BaseSvgProps = {
-  fill: "rgb(254, 91, 56)",
+  fill: "white",
   stroke: "black",
   strokeWidth: 2,
   width: "40px",

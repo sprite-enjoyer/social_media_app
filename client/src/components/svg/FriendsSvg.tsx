@@ -38,18 +38,20 @@ const FriendsSvg = ({ width, height, stroke, strokeWidth }: Partial<BaseSvgProps
   );
 };
 
-const activeProps = {
+const activeProps: BaseSvgProps = {
   stroke: "rgb(254, 91, 56)",
   strokeWidth: 2,
   width: "40px",
   height: "40px",
+  fill: ""
 };
 
-const notActiveProps = {
-  stroke: "rgb(254, 91, 56)",
+const notActiveProps: BaseSvgProps = {
+  stroke: "black",
   strokeWidth: 2,
   width: "40px",
   height: "40px",
+  fill: ""
 };
 
 export default { Component: FriendsSvg, activeProps, notActiveProps };

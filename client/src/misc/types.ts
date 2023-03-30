@@ -6,8 +6,10 @@ export interface BaseSvgProps {
   height: string,
 }
 
-export interface LeftSideBarSvgBaseProps extends BaseSvgProps {
-  active?: boolean
+export interface ActivableSvgObjectWithProps {
+  Component: (props: BaseSvgProps) => JSX.Element,
+  activeProps: BaseSvgProps,
+  notActiveProps: BaseSvgProps,
 }
 
 export interface PublicUser {

@@ -12,5 +12,9 @@
   gap: 30px;
   padding-top: 40px;
   margin-bottom: calc(abstracts.$header-height - 100vh);
+}
 
+.btn {
+  all: unset;
+  cursor: pointer;
 }
