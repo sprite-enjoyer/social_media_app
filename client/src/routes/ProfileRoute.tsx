@@ -22,9 +22,8 @@ const ProfileRoute = () => {
   useEffect(() => {
     AuthStore.checkIfLoggedIn()
       .then(res => {
-        if (res && AuthStore.getLoggedUserName()) {
-          profileRouteStore.setAdmin(res.username === AuthStore.getLoggedUserName());
-        }
+        if (!res) { navigate("/"); return; }
+        profileRouteStore.setAdmin(res.username === AuthStore.getLoggedUserName());
       })
       .catch(e => { console.error(e); navigate("/") });
   }, []);

@@ -5,6 +5,7 @@ import styles from "../styles/signInRouteStyles/signInRoute.module.scss";
 import { observer } from "mobx-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthStore from "../classes/AuthStore";
 
 const store = new SignInRouteStore();
 
@@ -12,6 +13,10 @@ const SignInRoute = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    AuthStore.checkIfLoggedIn()
+      .then(res => {
+        if (res) navigate(`/${res.username}`);
+      })
   }, []);
 
   return (

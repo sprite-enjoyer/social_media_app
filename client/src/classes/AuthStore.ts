@@ -12,7 +12,7 @@ class AuthStore {
     )
       .then(res => res)
       .catch(e => console.error(e));
-    if (!response) return null;
+    if (!response || !response.data || !response.data.user) return null;
 
     const { user } = response.data;
     this.loggedUserName = user.username;
