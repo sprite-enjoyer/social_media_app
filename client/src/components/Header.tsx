@@ -4,7 +4,7 @@ import searchSvg from "../assets/icons/search.svg";
 import MessagesSvg from "./svg/MessagesSvg";
 import NotificationsSvg from "./svg/NotificationsSvg";
 import LogoSvg from "./svg/LogoSvg";
-import HeaderStore from "../stores/HeaderStore";
+import HeaderStore from "../classes/HeaderStore";
 
 export interface HeaderProps {
   store: HeaderStore

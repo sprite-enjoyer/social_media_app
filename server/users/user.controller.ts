@@ -45,9 +45,9 @@ export const getCurrentUser = async (req: Request, res: Response) => {
 export const getUserHandler = async (req: Request, res: Response) => {
   const { userName } = req.params;
   const result = await prismaClient.user.findUnique({ where: { username: userName } });
-  if (!result) return res.json({ message: "no user", data: null });
+  if (!result) return res.json({ message: "no user", user: null });
   const { password, ...publicUser } = result;
-  res.json(publicUser);
+  res.json({ message: "success!", user: publicUser });
 };
 
 export const postUserHandler = async (req: Request, res: Response) => {
@@ -101,7 +101,6 @@ export const checkUserDataAndSendJWT = async (req: Request, res: Response) => {
     res.cookie('jwt', token,
       {
         maxAge: 24 * 60 * 60 * 1000,
-        httpOnly: true,
         secure: true,
         expires: date
       }

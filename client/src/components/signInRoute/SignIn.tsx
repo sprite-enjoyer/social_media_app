@@ -3,10 +3,12 @@ import googleImg from "../../assets/oauth_icons/google.svg";
 import facebookImg from "../../assets/oauth_icons/facebook.svg";
 import showPassword from "../../assets/icons/show_password.svg";
 import hidePassword from "../../assets/icons/hide_password.svg";
-import SignInRouteStore from "../../stores/SignInRouteStore";
+import SignInRouteStore from "../../classes/SignInRouteStore";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
-import AuthStore from "../../stores/AuthStore";
+import { useEffect } from "react";
+import AuthStore from "../../classes/AuthStore";
+
 export interface SignInProps {
   store: SignInRouteStore,
 }
@@ -15,8 +17,15 @@ const SignIn = ({ store }: SignInProps) => {
   const navigate = useNavigate();
   const handleRegisterButtonClick = () => store.setSignUpShown(true);
   const handleSignInButtonClick = async () => {
-    AuthStore.getApiResponse(navigate, { email: store.signInEmail, password: store.signInPassword });
+    const user = await AuthStore.signIn({ email: store.signInEmail, password: store.signInPassword });
+    if (user) navigate(`/${user.username}`);
   };
+
+  useEffect(() => {
+    AuthStore.checkIfLoggedIn().then(user => {
+      if (user) navigate(`/${user.username}`);
+    });
+  }, []);
 
   return (
     <div className={styles["main"]} >

@@ -1,4 +1,4 @@
-import RightSidebarStore from "../stores/RightSidebarStore";
+import RightSidebarStore from "../classes/RightSidebarStore";
 import styles from "../styles/componentStyles/rightSidebar.module.scss";
 
 export interface RightSideBarProps {

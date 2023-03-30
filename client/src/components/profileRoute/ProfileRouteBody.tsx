@@ -8,7 +8,7 @@ import ProfileRouteUserPanel from "./ProfileRouteUserPanel";
 import profilePicture from "../../assets/images/profile_picture.jpg";
 import FavouritePages from "./FavouritePages";
 import PostList from "./PostList";
-import ProfileRouteStore from "../../stores/ProfileRouteStore";
+import ProfileRouteStore from "../../classes/ProfileRouteStore";
 
 export interface ProfileRouteBodyProps {
   store: ProfileRouteStore,
