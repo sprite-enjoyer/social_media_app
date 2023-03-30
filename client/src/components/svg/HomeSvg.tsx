@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { BaseSvgProps } from "../../misc/types";
 
 export interface HomeSvgProps extends Partial<BaseSvgProps> {
@@ -44,5 +43,20 @@ const HomeSvg = ({ width, height, fill, fill2 }: HomeSvgProps) => {
   );
 };
 
+const activeProps: HomeSvgProps = {
+  fill2: "black",
+  fill: "rgb(254, 91, 56)",
+  width: "40px",
+  height: "40px",
+};
 
-export default memo(HomeSvg);
+const notActiveProps: HomeSvgProps = {
+  fill2: "black",
+  fill: "rgb(254, 91, 56)",
+  width: "40px",
+  height: "40px",
+};
+
+export default { Component: HomeSvg, activeProps, notActiveProps };
+
+

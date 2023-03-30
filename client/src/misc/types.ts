@@ -6,6 +6,10 @@ export interface BaseSvgProps {
   height: string,
 }
 
+export interface LeftSideBarSvgBaseProps extends BaseSvgProps {
+  active?: boolean
+}
+
 export interface PublicUser {
   id: string;
   username: string;

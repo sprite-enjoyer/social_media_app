@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { BaseSvgProps } from "../../misc/types";
 
 const StarSvg = ({ fill, stroke, strokeWidth, width, height }: BaseSvgProps) => {
@@ -16,6 +15,21 @@ const StarSvg = ({ fill, stroke, strokeWidth, width, height }: BaseSvgProps) => 
   );
 };
 
+const activeProps: BaseSvgProps = {
+  fill: "rgb(254, 91, 56)",
+  stroke: "black",
+  strokeWidth: 2,
+  width: "40px",
+  height: "40px",
+};
+
+const notActiveProps: BaseSvgProps = {
+  fill: "rgb(254, 91, 56)",
+  stroke: "black",
+  strokeWidth: 2,
+  width: "40px",
+  height: "40px",
+};
 
 
-export default memo(StarSvg);
+export default { Component: StarSvg, activeProps, notActiveProps };

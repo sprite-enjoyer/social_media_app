@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { BaseSvgProps } from "../../misc/types";
 
 const FriendsSvg = ({ width, height, stroke, strokeWidth }: Partial<BaseSvgProps>) => {
@@ -39,4 +38,18 @@ const FriendsSvg = ({ width, height, stroke, strokeWidth }: Partial<BaseSvgProps
   );
 };
 
-export default memo(FriendsSvg);
+const activeProps = {
+  stroke: "rgb(254, 91, 56)",
+  strokeWidth: 2,
+  width: "40px",
+  height: "40px",
+};
+
+const notActiveProps = {
+  stroke: "rgb(254, 91, 56)",
+  strokeWidth: 2,
+  width: "40px",
+  height: "40px",
+};
+
+export default { Component: FriendsSvg, activeProps, notActiveProps };
