@@ -15,7 +15,7 @@ const SignInRoute = () => {
   useEffect(() => {
     AuthStore.checkIfLoggedIn()
       .then(res => {
-        if (res) navigate(`/${res.username}`);
+        if (res) navigate(`/main/${res.username}`);
       })
   }, []);
 

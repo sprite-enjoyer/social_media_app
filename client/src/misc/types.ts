@@ -12,7 +12,7 @@ export interface PublicUser {
   email: string;
   firstName: string;
   lastName: string;
-  avatarUrl: string | null;
+  profilePicture: string | null;
   bio: string | null;
   birthDate: Date | null;
   location: string | null;

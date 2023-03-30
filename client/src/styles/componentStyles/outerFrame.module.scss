@@ -1,0 +1,14 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+.main {
+  @include abstracts.routeBaseStyle();
+  height: auto;
+}
+
+.bottom {
+  display: flex;
+  height: auto;
+  width: 100%;
+  justify-content: space-between;
+  background-color: abstracts.$body-background-color;
+}

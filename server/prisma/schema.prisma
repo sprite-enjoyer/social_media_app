@@ -8,24 +8,24 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId()
-  username      String    @unique
-  email         String    @unique
-  password      String
-  firstName     String
-  lastName      String
-  avatarUrl     String?
-  bio           String?
-  birthDate     DateTime?
-  location      String?
-  website       String?
-  createdAt     DateTime? @default(now())
-  updatedAt     DateTime? @updatedAt
-  posts         Post[]
-  followedBy    User[]    @relation("UserFollows", fields: [followedByIDs], references: [id])
-  followedByIDs String[]  @db.ObjectId
-  following     User[]    @relation("UserFollows", fields: [followingIDs], references: [id])
-  followingIDs  String[]  @db.ObjectId
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId()
+  username       String    @unique
+  email          String    @unique
+  password       String
+  firstName      String
+  lastName       String
+  profilePicture String?
+  bio            String?
+  birthDate      DateTime?
+  location       String?
+  website        String?
+  createdAt      DateTime? @default(now())
+  updatedAt      DateTime? @updatedAt
+  posts          Post[]
+  followedBy     User[]    @relation("UserFollows", fields: [followedByIDs], references: [id])
+  followedByIDs  String[]  @db.ObjectId
+  following      User[]    @relation("UserFollows", fields: [followingIDs], references: [id])
+  followingIDs   String[]  @db.ObjectId
 }
 
 model Post {

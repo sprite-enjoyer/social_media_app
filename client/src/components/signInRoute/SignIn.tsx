@@ -18,12 +18,12 @@ const SignIn = ({ store }: SignInProps) => {
   const handleRegisterButtonClick = () => store.setSignUpShown(true);
   const handleSignInButtonClick = async () => {
     const user = await AuthStore.signIn({ email: store.signInEmail, password: store.signInPassword });
-    if (user) navigate(`/${user.username}`);
+    if (user) navigate(`/main/${user.username}`);
   };
 
   useEffect(() => {
     AuthStore.checkIfLoggedIn().then(user => {
-      if (user) navigate(`/${user.username}`);
+      if (user) navigate(`/main/${user.username}`);
     });
   }, []);
 
