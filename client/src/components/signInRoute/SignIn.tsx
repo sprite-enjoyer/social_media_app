@@ -21,12 +21,6 @@ const SignIn = ({ store }: SignInProps) => {
     if (user) navigate(`/main/${user.username}`);
   };
 
-  useEffect(() => {
-    AuthStore.checkIfLoggedIn().then(user => {
-      if (user) navigate(`/main/${user.username}`);
-    });
-  }, []);
-
   return (
     <div className={styles["main"]} >
       <h1 className={styles["title"]} >

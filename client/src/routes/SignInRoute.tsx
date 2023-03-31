@@ -12,12 +12,7 @@ const store = new SignInRouteStore();
 const SignInRoute = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    AuthStore.checkIfLoggedIn()
-      .then(res => {
-        if (res) navigate(`/main/${res.username}`);
-      })
-  }, []);
+  useEffect(() => { AuthStore.checkIfLoggedIn().then(res => { if (res) navigate(`/main/${res.username}`); }) }, []);
 
   return (
     <>
