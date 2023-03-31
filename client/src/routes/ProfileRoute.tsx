@@ -24,7 +24,7 @@ const ProfileRoute = () => {
 
   return (
     <div className={styles["body"]} >
-      <ProfileRouteBody store={profileRouteStore} />
+      <ProfileRouteBody profileRouteStore={profileRouteStore} />
     </div>
   );
 };

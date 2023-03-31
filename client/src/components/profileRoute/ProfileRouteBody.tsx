@@ -11,13 +11,13 @@ import PostList from "./PostList";
 import ProfileRouteStore from "../../classes/ProfileRouteStore";
 
 export interface ProfileRouteBodyProps {
-  store: ProfileRouteStore,
+  profileRouteStore: ProfileRouteStore,
 }
 
-const ProfileRouteBody = ({ store }: ProfileRouteBodyProps) => {
+const ProfileRouteBody = ({ profileRouteStore }: ProfileRouteBodyProps) => {
   return (
     <div className={styles["main"]} >
-      <ProfileRouteUserPanel />
+      <ProfileRouteUserPanel profileRouteStore={profileRouteStore} />
       <div className={styles["bottom"]} >
         <div className={styles["bottom__left"]}>
           <ProfileIntro content={testInformation} networks={testNetworks} />

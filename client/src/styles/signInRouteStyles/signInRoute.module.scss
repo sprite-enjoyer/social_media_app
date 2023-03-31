@@ -2,9 +2,9 @@
 
 .main {
 
-  @include abstracts.routeBaseStyle;
+  @include abstracts.routeBaseStyle();
   display: flex;
-  height: auto;
+  height: 100%;
 
   &__left {
 

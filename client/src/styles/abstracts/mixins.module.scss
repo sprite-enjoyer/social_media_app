@@ -69,3 +69,13 @@
   padding: 0 8% 4% 8%;
   outline: 1px solid rgb(228, 228, 228);
 }
+
+@mixin modalOuterDiv {
+  @include routeBaseStyle();
+  @include centeringStyle();
+  @include myFont();
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.425);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}

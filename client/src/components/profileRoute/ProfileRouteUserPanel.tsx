@@ -4,8 +4,13 @@ import profilePicture from "../../assets/images/profile_picture.jpg";
 import addPhotoSvg from "../../assets/icons/add_photo.svg";
 import settingsSvg from "../../assets/icons/settings.svg";
 import othersSvg from "../../assets/icons/others.svg";
+import ProfileRouteStore from "../../classes/ProfileRouteStore";
 
-const ProfileRouteUserPanel = () => {
+export interface ProfileRouteUserPanelProps {
+  profileRouteStore: ProfileRouteStore
+}
+
+const ProfileRouteUserPanel = ({ profileRouteStore }: ProfileRouteUserPanelProps) => {
 
   return (
     <div className={styles["main"]} >
