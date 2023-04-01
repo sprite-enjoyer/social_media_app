@@ -1,9 +1,9 @@
 import express from 'express';
 import {
-  postUserHandler,
-  getUserHandler,
-  putUserHandler,
-  deleteUserHandler,
+  postUser,
+  getUser,
+  putUser,
+  deleteUser,
   checkUserDataAndSendJWT,
   verifyJWT,
   getCurrentUser,
@@ -11,12 +11,12 @@ import {
 
 export const userRouter = express.Router();
 
-userRouter.get('/:userName', getUserHandler);
+userRouter.get('/:userName', getUser);
 userRouter.get("/get/currentUser", verifyJWT, getCurrentUser);
 
-userRouter.post("/post", postUserHandler);
+userRouter.post("/post", postUser);
 userRouter.post("/checkUser", checkUserDataAndSendJWT);
 
-userRouter.put("/put/:email", putUserHandler);
+userRouter.put("/put/:email", putUser);
 
-userRouter.delete("/delete/:email", deleteUserHandler);
+userRouter.delete("/delete/:email", deleteUser);
