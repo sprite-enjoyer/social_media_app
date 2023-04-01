@@ -23,7 +23,6 @@ export const verifyJWT = async (req: Request, res: Response, next: NextFunction)
   const callback: VerifyCallback<JwtPayload | string> = (err, decoded) => {
     if (err) {
       console.error(err.message, " - jwt verification error");
-      res.json({ auth: false, message: "not authenticated." });
       res.locals.userInfo = { id: null, guest: true, loggedIn: false };
       next();
     }
@@ -36,7 +35,8 @@ export const verifyJWT = async (req: Request, res: Response, next: NextFunction)
       };
       next();
     }
-  }
+  };
+
   jwt.verify(token, secret, callback);
 };
 
@@ -59,8 +59,16 @@ export const getCurrentUser = async (req: Request, res: Response<GetCurrentUserR
   );
 
   const userInfo = res.locals.userInfo as UserInfo;
+  if (userInfo.guest && userInfo.loggedIn) res.json(
+    {
+      message: "logical error in getCurrentUser",
+      user: null,
+      loggedIn: false,
+      guest: true,
+    }
+  );
 
-  let user = await prismaClient.user.findUnique({ where: { id: userInfo.userId } });
+  const user = await prismaClient.user.findUniqueOrThrow({ where: { id: userInfo.userId } });
   if (!user) {
     res.json(
       {
@@ -175,15 +183,15 @@ export const signOut = async (req: Request, res: Response<SignOutResponseBody>) 
 
   const jwtSecret = process.env.JWT_SECRET;
   if (!jwtSecret) return res.status(500).json({ message: "secret not defined in the server", });
-
   if (!res.locals.userInfo) res.json({ message: "no jwt user id found" });
-
   const userInfo = res.locals.userInfo as UserInfo;
+  if (!userInfo.loggedIn) res.status(400).json({ message: "you are not signed in to sign out" });
 
   const token = jwt.sign({ userId: userInfo.userId, loggedIn: false }, jwtSecret);
   const date = new Date();
   date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
 
+  res.clearCookie("jwt");
   res.cookie('jwt', token,
     {
       maxAge: 24 * 60 * 60 * 1000,
