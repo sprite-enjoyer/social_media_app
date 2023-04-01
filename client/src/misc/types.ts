@@ -28,3 +28,10 @@ export interface PublicUser {
   followedByIDs: string[];
   followingIDs: string[];
 }
+
+export interface GetCurrentUserResponse {
+  message: string,
+  user: null | PublicUser,
+  loggedIn: boolean,
+  guest: boolean,
+}

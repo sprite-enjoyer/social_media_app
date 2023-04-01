@@ -1,23 +1,35 @@
-import axios from "axios";
-import { PublicUser } from "../misc/types";
+import axios, { AxiosResponse } from "axios";
+import { GetCurrentUserResponse, PublicUser } from "../misc/types";
 
 class AuthStore {
 
   private static loggedUserName?: string;
+  private static savedUserName?: string;
 
-  static async checkIfLoggedIn(): Promise<null | PublicUser> {
+  static async checkIfLoggedIn(): Promise<GetCurrentUserResponse> {
     const response = await axios.get(
       `${import.meta.env.VITE_SERVER_BASE_URL}/users/get/currentUser`,
       { withCredentials: true, }
     )
       .then(res => res)
-      .catch(e => console.error(e));
-    if (!response || !response.data || !response.data.user) return null;
+      .catch(e => console.error(e)) as AxiosResponse<GetCurrentUserResponse>;
 
-    const { user } = response.data;
-    this.loggedUserName = user.username;
+    if (!response || !response.data || !response.data.user) {
+      return {
+        guest: true,
+        user: null,
+        loggedIn: false,
+        message: "no response received",
+      };
+    }
 
-    return user;
+    const { user, message, loggedIn } = response.data;
+    if (!user) console.error(message);
+
+    this.savedUserName = user.username;
+    if (loggedIn) this.loggedUserName = user.username;
+
+    return { ...response.data };
   }
 
   static async signIn(body: { email: string, password: string }) {
@@ -39,8 +51,14 @@ class AuthStore {
     return AuthStore.loggedUserName;
   }
 
+  static getSavedUserName() {
+    return this.savedUserName;
+  }
+
   static async signOut() {
-    document.cookie = "jwt=; Path=/;";
+    await axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/users/get/signOut`)
+      .then(res => res)
+      .catch(e => console.error(e));
   }
 
 }
