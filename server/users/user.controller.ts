@@ -49,26 +49,33 @@ export interface GetCurrentUserResponseBody {
 }
 
 export const getCurrentUser = async (req: Request, res: Response<GetCurrentUserResponseBody>) => {
-  if (!res.locals.userInfo) res.json(
-    {
-      message: "no jwt user id found",
-      user: null,
-      loggedIn: false,
-      guest: true,
-    }
-  );
+
+  const inCaseOfErrorResponseData = {
+    user: null,
+    loggedIn: false,
+    guest: true,
+  };
+
+  if (!res.locals.userInfo) {
+    res.json({ message: "no jwt user information found", ...inCaseOfErrorResponseData });
+    return;
+  }
 
   const userInfo = res.locals.userInfo as UserInfo;
-  if (userInfo.guest && userInfo.loggedIn) res.json(
-    {
+  if (userInfo.guest && userInfo.loggedIn) {
+    res.json({
       message: "logical error in getCurrentUser",
-      user: null,
-      loggedIn: false,
-      guest: true,
-    }
-  );
+      ...inCaseOfErrorResponseData
+    });
+    return;
+  }
 
-  const user = await prismaClient.user.findUniqueOrThrow({ where: { id: userInfo.userId } });
+  if (!userInfo.userId) {
+    res.json({ message: "user is null", ...inCaseOfErrorResponseData });
+    return;
+  }
+
+  const user = await prismaClient.user.findUnique({ where: { id: userInfo.userId } });
   if (!user) {
     res.json(
       {

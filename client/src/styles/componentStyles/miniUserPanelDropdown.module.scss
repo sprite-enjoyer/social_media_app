@@ -1,0 +1,54 @@
+@use "../abstracts/abstracts.module.scss" as abstracts;
+
+$padding-left: 10px;
+$padding-right: 10px;
+$pading-property: 0 $padding-right 0 $padding-left;
+
+.main {
+  position: absolute;
+  width: 300px;
+  height: auto;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  top: calc(abstracts.$header-height + 5px);
+  @include abstracts.centeringStyle(column);
+  box-sizing: border-box;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  opacity: 0.2;
+  background-color: rgb(128, 128, 128);
+}
+
+.item {
+  @include abstracts.myFont();
+  box-sizing: border-box;
+  padding: $pading-property;
+  height: 50px;
+  width: 100%;
+  outline: 2px solid black;
+}
+
+.title {
+  @include abstracts.myFont(600, 0.5em, gray, 0.8);
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  outline: 2px solid springgreen;
+  display: flex;
+  align-items: center;
+  padding: $pading-property;
+
+}
+
+.input-wrapper {
+
+  &__input {}
+
+  &__btn {}
+}
+
+.img {}

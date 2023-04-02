@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import OuterFrame from './components/OuterFrame';
+import OuterFrame from './components/general/OuterFrame';
 import ProfileRoute from "./routes/ProfileRoute";
 import SignInRoute from "./routes/SignInRoute";
 

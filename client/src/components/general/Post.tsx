@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import styles from "../styles/componentStyles/post.module.scss";
-import CommentsSvg from "./svg/CommentsSvg";
-import HeartSvg from "./svg/HeartSvg";
-import ShareSvg from "./svg/ShareSvg";
+import styles from "../../styles/componentStyles/post.module.scss";
+import CommentsSvg from "../svg/CommentsSvg";
+import HeartSvg from "../svg/HeartSvg";
+import ShareSvg from "../svg/ShareSvg";
 
 export interface PostProps {
   userName: string,

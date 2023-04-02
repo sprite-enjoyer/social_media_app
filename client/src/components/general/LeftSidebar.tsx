@@ -1,12 +1,12 @@
 import { observer } from "mobx-react";
 import { useMemo } from "react";
-import LeftSidebarStore from "../classes/LeftSidebarStore";
-import { ActivableSvgObjectWithProps } from "../misc/types";
-import styles from "../styles/componentStyles/leftSidebar.module.scss";
-import FriendsSvg from "./svg/FriendsSvg";
-import HomeSvg from "./svg/HomeSvg";
-import ProfileSvg from "./svg/ProfileSvg";
-import StarSvg from "./svg/StarSvg";
+import LeftSidebarStore from "../../classes/LeftSidebarStore";
+import { ActivableSvgObjectWithProps } from "../../misc/types";
+import styles from "../../styles/componentStyles/leftSidebar.module.scss";
+import FriendsSvg from "../svg/FriendsSvg";
+import HomeSvg from "../svg/HomeSvg";
+import ProfileSvg from "../svg/ProfileSvg";
+import StarSvg from "../svg/StarSvg";
 
 export interface LeftSidebarProps {
   leftSidebarStore: LeftSidebarStore

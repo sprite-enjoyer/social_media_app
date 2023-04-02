@@ -12,15 +12,19 @@ const store = new SignInRouteStore();
 
 const SignInRoute = () => {
   const navigate = useNavigate();
-  useEffect(() => { AuthStore.checkIfLoggedIn().then(res => { if (res) navigate(`/main/${res.user?.username}`); }) }, []);
+  useEffect(() => {
+    AuthStore.checkIfLoggedIn().then(res => {
+      if (res.user) navigate(`/main/${res.user?.username}`);
+    })
+  }, []);
 
   return (
     <>
       {
-        store.signUpShown && <InsideModal
-          component={<SignUpModal store={store} />}
-          handleOnClick={() => store.setSignUpShown(false)}
-        />
+        store.signUpShown &&
+        <InsideModal handleOnClick={() => store.setSignUpShown(false)}>
+          <SignUpModal store={store} />
+        </InsideModal>
       }
       <div className={styles["main"]} >
         <div className={styles["main__left"]} >

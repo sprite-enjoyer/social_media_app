@@ -2,16 +2,16 @@ import styles from "../styles/componentStyles/InsideModal.module.scss";
 import { ReactNode } from "react";
 
 export interface InsideModalProps {
-  component: ReactNode,
+  children: ReactNode,
   handleOnClick: () => void,
 }
 
-const InsideModal = ({ component, handleOnClick }: InsideModalProps) => {
+const InsideModal = ({ children, handleOnClick }: InsideModalProps) => {
 
   return (
     <div className={styles["main"]} onClick={handleOnClick}>
       <div onClick={(e) => e.stopPropagation()}>
-        {component}
+        {children}
       </div>
     </div >
   );

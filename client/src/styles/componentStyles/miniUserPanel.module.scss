@@ -1,9 +1,9 @@
 @use "../abstracts/abstracts.module.scss" as abstracts;
 
 .main {
+  position: relative;
   height: 100%;
   width: 300px;
-  right: 80px;
   display: flex;
   align-items: center;
   color: white;
@@ -22,9 +22,18 @@
 
 .status-btn {
   @include abstracts.resetButton($all: initial, $background-color: transparent);
-  border-radius: 50%;
+  position: relative;
   aspect-ratio: 1;
   height: 70%;
+
+  &__indicator {
+    position: absolute;
+    border-radius: 50%;
+    width: 20%;
+    height: 20%;
+    top: 4.64%;
+    left: 4.64%;
+  }
 }
 
 .user-image {
@@ -36,18 +45,17 @@
 
 .middle {
   @include abstracts.centeringStyle(column);
-  @include abstracts.myFont(600);
   flex: 7 7;
 }
 
 .name {
-  @include abstracts.myFont(500, 18px, white, 1);
+  @include abstracts.myFont(500, 1em, white, 1);
   @include abstracts.centeringStyle(column);
   justify-content: flex-end;
 }
 
 .title {
-  @include abstracts.myFont(200, 15px, white);
+  @include abstracts.myFont(200, 0.7em, white);
   @include abstracts.centeringStyle();
 }
 

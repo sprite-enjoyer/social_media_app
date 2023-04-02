@@ -1,4 +1,4 @@
-import styles from "../styles/componentStyles/rightSidebar.module.scss";
+import styles from "../../styles/componentStyles/rightSidebar.module.scss";
 
 const RightSidebar = () => {
 

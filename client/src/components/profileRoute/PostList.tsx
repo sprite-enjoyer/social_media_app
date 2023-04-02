@@ -1,4 +1,4 @@
-import Post, { PostProps } from "../Post";
+import Post, { PostProps } from "../general/Post";
 
 export interface PostListProps {
   posts: PostProps[],

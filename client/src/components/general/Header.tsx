@@ -1,16 +1,16 @@
-import styles from "../styles/componentStyles/header.module.scss";
-import HeaderDropDown from "./HeaderDropDown";
-import searchSvg from "../assets/icons/search.svg";
-import MessagesSvg from "./svg/MessagesSvg";
-import NotificationsSvg from "./svg/NotificationsSvg";
-import LogoSvg from "./svg/LogoSvg";
-import HeaderStore from "../classes/HeaderStore";
+import styles from "../../styles/componentStyles/header.module.scss";
+import MiniUserPanel from "./MiniUserPanel";
+import searchSvg from "../../assets/icons/search.svg";
+import MessagesSvg from "../svg/MessagesSvg";
+import NotificationsSvg from "../svg/NotificationsSvg";
+import LogoSvg from "../svg/LogoSvg";
+import HeaderStore from "../../classes/HeaderStore";
 
 export interface HeaderProps {
-  store: HeaderStore
+  headerStore: HeaderStore
 }
 
-const Header = ({ store }: HeaderProps) => {
+const Header = ({ headerStore }: HeaderProps) => {
 
   return (
     <div className={styles["main"]} >
@@ -65,7 +65,7 @@ const Header = ({ store }: HeaderProps) => {
             height={"40px"}
           />
         </button>
-        <HeaderDropDown />
+        <MiniUserPanel headerStore={headerStore} />
       </div>
     </div>
   );
