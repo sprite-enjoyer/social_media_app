@@ -1,9 +1,19 @@
-import { makeObservable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 
 
 class HeaderStore {
+
+  dropdownShown = false;
+
   constructor() {
-    makeObservable(this, {});
+    makeObservable(this, {
+      dropdownShown: observable,
+      setDropdownShown: action,
+    });
+  }
+
+  setDropdownShown(newValue: boolean) {
+    this.dropdownShown = newValue;
   }
 }
 
